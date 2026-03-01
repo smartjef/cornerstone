@@ -13,7 +13,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-ibm-plex-sans)", "sans-serif"],
+        sans: ["var(--font-outfit)", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",

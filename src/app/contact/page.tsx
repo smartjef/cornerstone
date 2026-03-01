@@ -1,42 +1,118 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="container space-y-10 py-12 md:py-16">
-      <section className="max-w-3xl space-y-4">
-        <h1 className="text-3xl font-semibold md:text-5xl">Contact</h1>
-        <p className="text-muted-foreground">Reach us for partnerships, governance inquiries, or community collaboration opportunities.</p>
+    <div className="w-full relative bg-slate-50 dark:bg-slate-950 min-h-screen pb-24">
+      {/* Background Brick Pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none z-0"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v10H0V0zm20 10h20v10H20V10zM0 20h20v10H0V20zm20 10h20v10H20V30z' fill='%2310b981' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")` }}
+      />
+
+      {/* Page Header */}
+      <section className="relative pt-32 pb-24 w-full flex items-center justify-center bg-emerald-950 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-emerald-950 to-emerald-950 mix-blend-multiply" />
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-6">
+          <div className="inline-flex items-center justify-center p-3 bg-emerald-800/50 rounded-full mb-2">
+            <MessageSquare className="w-6 h-6 text-emerald-300" />
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-4">
+            Get in <span className="text-emerald-400">Touch</span>
+          </h1>
+          <p className="text-lg md:text-xl text-emerald-100/80 leading-relaxed font-light max-w-2xl mx-auto">
+            Reach us for partnerships, governance inquiries, or community collaboration opportunities. We would love to hear from you.
+          </p>
+        </div>
       </section>
 
-      <section className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader><CardTitle>Send us a message</CardTitle></CardHeader>
-          <CardContent className="space-y-4">
-            <Input placeholder="Full Name" />
-            <Input type="email" placeholder="Email Address" />
-            <Input placeholder="Subject" />
-            <Textarea placeholder="Your message" />
-            <Button>Submit</Button>
-          </CardContent>
-        </Card>
+      <section className="relative -mt-16 z-20 max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-5 gap-8">
 
-        <div className="space-y-6">
-          <Card>
-            <CardHeader><CardTitle>Foundation Information</CardTitle></CardHeader>
-            <CardContent className="space-y-2 text-sm text-muted-foreground">
-              <p>Email: info@cornerstonefoundation.org</p>
-              <p>Phone: +254 700 000 000</p>
-              <p>Address: Nairobi, Kenya</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader><CardTitle>Map Placeholder</CardTitle></CardHeader>
-            <CardContent className="h-48 rounded-md border border-dashed bg-muted/40" />
-          </Card>
+          {/* Contact Form */}
+          <div className="lg:col-span-3 bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 dark:border border-slate-100 dark:border-slate-800">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Send us a message</h3>
+            <div className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Full Name</label>
+                  <Input placeholder="John Doe" className="h-12 bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-emerald-500 rounded-xl" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
+                  <Input type="email" placeholder="john@example.com" className="h-12 bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-emerald-500 rounded-xl" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Subject</label>
+                <Input placeholder="How can we partner?" className="h-12 bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-emerald-500 rounded-xl" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Message</label>
+                <Textarea placeholder="Tell us more about your inquiry..." className="min-h-[160px] resize-none bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-emerald-500 rounded-2xl p-4" />
+              </div>
+              <Button size="lg" className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold h-14 px-10 rounded-xl ">
+                Send Message
+              </Button>
+            </div>
+          </div>
+
+          {/* Sidebar Info */}
+          <div className="lg:col-span-2 space-y-8">
+            <div className="bg-emerald-900 rounded-3xl p-8 md:p-10 border border-emerald-800 text-white h-full flex flex-col justify-center">
+              <h3 className="text-2xl font-bold mb-8 text-emerald-50">Foundation Info</h3>
+
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-800 rounded-2xl flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-emerald-300" />
+                  </div>
+                  <div>
+                    <p className="text-emerald-400 font-semibold text-sm mb-1 uppercase tracking-wider">Email Us</p>
+                    <p className="text-emerald-50 font-medium">info@cornerstone.or.ke</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-800 rounded-2xl flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-emerald-300" />
+                  </div>
+                  <div>
+                    <p className="text-emerald-400 font-semibold text-sm mb-1 uppercase tracking-wider">Call Us</p>
+                    <p className="text-emerald-50 font-medium">+254 700 000 000</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-800 rounded-2xl flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-emerald-300" />
+                  </div>
+                  <div>
+                    <p className="text-emerald-400 font-semibold text-sm mb-1 uppercase tracking-wider">Location</p>
+                    <p className="text-emerald-50 font-medium leading-relaxed">Nairobi, Kenya<br />HQ Office</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        {/* Map Section */}
+        <div className="mt-12 lg:mt-16 bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-100 dark:border-slate-800">
+          <div className="w-full h-80 md:h-[450px] bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden relative">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127641.17044258445!2d36.76499689115439!3d-1.303035980636506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi!5e0!3m2!1sen!2ske!4v1772385496154!5m2!1sen!2ske"
+              className="w-full h-full border-0"
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+
       </section>
     </div>
   );

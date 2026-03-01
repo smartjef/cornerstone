@@ -11,13 +11,13 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="sm"
+      className="rounded-full w-10 h-10 p-0 hover:bg-slate-100 dark:hover:bg-slate-800"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle light and dark mode"
     >
-      {isDark ? <Sun className="h-4 w-4" /> : <MoonStar className="h-4 w-4" />}
-      <span className="hidden sm:inline">{isDark ? "Light" : "Dark"} mode</span>
+      {isDark ? <Sun className="h-5 w-5 text-slate-300" /> : <MoonStar className="h-5 w-5 text-slate-600" />}
     </Button>
   );
 }
