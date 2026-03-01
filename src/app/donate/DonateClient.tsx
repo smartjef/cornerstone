@@ -62,19 +62,19 @@ export default function DonatePage() {
       <section className="relative z-10 max-w-7xl mx-auto px-6 pt-32 lg:pt-40 flex flex-col lg:flex-row gap-12 lg:gap-20">
 
         {/* Left Side: Information */}
-        <div className="lg:w-1/2 flex flex-col justify-center space-y-8">
-          <div className="inline-flex items-center p-3 bg-emerald-100 dark:bg-emerald-900/40 rounded-full w-fit mb-2">
+        <div className="lg:w-1/2 flex flex-col justify-center space-y-4">
+          <div className="inline-flex items-center p-3 bg-emerald-100 dark:bg-emerald-900/40 rounded-full w-fit mb-1">
             <HeartHandshake className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
             Make an <span className="text-emerald-600">Impact</span> Today
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light mb-2">
             Your support directly fuels mission-critical programs—from providing clean water to funding essential medical camps. Every contribution, no matter the size, changes lives.
           </p>
 
-          <div className="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
-            <h3 className="font-bold text-xl text-slate-900 dark:text-white">Why Give Here?</h3>
+          <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <h3 className="font-bold text-xl text-slate-900 dark:text-white mb-2">Why Give Here?</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0 mr-4">
