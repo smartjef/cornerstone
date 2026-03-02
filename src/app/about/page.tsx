@@ -77,7 +77,7 @@ export default function AboutPage() {
           <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-2 transition-transform duration-300">
             <div className="h-72 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
               <Image
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
                 alt="Julius Migos Ogamba"
                 width={800} height={800}
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -97,7 +97,7 @@ export default function AboutPage() {
             <div key={trustee} className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-2 transition-transform duration-300">
               <div className="h-72 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <Image
-                  src={`https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop&sig=${index}`}
+                  src={`https://source.unsplash.com/random/800x800/?african,man,portrait&sig=${index + 10}`}
                   alt={trustee}
                   width={800} height={800}
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"

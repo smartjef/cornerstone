@@ -58,7 +58,7 @@ export default function HomePage() {
             {/* Soft decorative background shape */}
             <div className="absolute -inset-4 bg-emerald-100 dark:bg-emerald-900/20 rounded-[3rem] transform -rotate-3 transition-transform hover:rotate-0 duration-500" />
             <Image
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2670&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=2670&auto=format&fit=crop"
               alt="Impact Foundation"
               width={2670} height={1500}
               className="relative rounded-3xl object-cover h-[500px] w-full"
@@ -111,6 +111,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Video Section - Impact in Action */}
+      <section className="w-full py-24 bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto px-6 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase">Our Impact in Action</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Witness The Change</h3>
+            <p className="text-lg text-slate-600 dark:text-slate-400">See firsthand how our programs are changing lives across communities in Kenya.</p>
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 pt-[56.25%]">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute top-0 left-0 w-full h-full object-cover"
+            >
+              <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+          </div>
+        </div>
+      </section>
+
       {/* 4. Latest Updates (Clean Masonry-like presentation) */}
       <section className="w-full py-24 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
@@ -129,7 +154,7 @@ export default function HomePage() {
               <Link href={`/blog/${update.slug}`} key={update.slug} className="group bg-white dark:bg-slate-950 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 hover:transition-all duration-300 flex flex-col h-full">
                 <div className="relative h-[220px] w-full overflow-hidden">
                   <Image
-                    src={`https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600&auto=format&fit=crop&sig=${update.slug}`}
+                    src={update.image}
                     alt={update.title}
                     width={800} height={600}
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
@@ -146,6 +171,58 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial Section - Voices of Impact */}
+      <section className="w-full py-24 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-6 space-y-16">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase">Voices of Impact</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">What Our Beneficiaries Say</h3>
+            <p className="text-lg text-slate-600 dark:text-slate-400">Real stories from the communities we serve across Kenya.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                text: "The bursary from Cornerstone Foundation allowed me to finish my high school education when my family had lost all hope. I am now pursuing nursing.",
+                author: "Grace Akinyi",
+                role: "Scholarship Recipient",
+                image: "/images/avatar_grace_1772437833562.png"
+              },
+              {
+                text: "Before the new borehole, we walked miles every day for water that wasn't even safe. Now, our children are healthier and we have more time to farm.",
+                author: "Joseph Mathenge",
+                role: "Village Elder, Laikipia",
+                image: "/images/avatar_joseph_1772438049897.png"
+              },
+              {
+                text: "The free medical camp came right when my son was very ill. The doctors not only treated him but gave us medicine we could never have afforded.",
+                author: "Mary Atieno",
+                role: "Community Member",
+                image: "/images/avatar_mary_1772437851425.png"
+              }
+            ].map((testimonial, i) => (
+              <div key={i} className="bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 relative">
+                <div className="text-emerald-500 mb-6">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="opacity-40">
+                    <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
+                  </svg>
+                </div>
+                <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-8 italic"><q>{testimonial.text}</q></p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-800 shrink-0">
+                    <Image src={testimonial.image} alt={testimonial.author} width={100} height={100} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white leading-tight">{testimonial.author}</h4>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">{testimonial.role}</span>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

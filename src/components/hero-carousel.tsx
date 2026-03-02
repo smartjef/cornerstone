@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 const SLIDES = [
     {
-        image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2670&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2670&auto=format&fit=crop",
         badge: "Empowering Communities",
         title1: "Building a",
         titleHighlight: "Brighter",
@@ -17,7 +17,7 @@ const SLIDES = [
         desc: "The Cornerstone Foundation provides critical support for education, healthcare, vulnerable groups, and clean water infrastructure across Kenya.",
     },
     {
-        image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2670&auto=format&fit=crop",
+        image: "/images/school_building_1772435941123.png",
         badge: "Educating the Youth",
         title1: "Scholarships for",
         titleHighlight: "Every",
@@ -25,7 +25,7 @@ const SLIDES = [
         desc: "Ensuring access to quality education for the most vulnerable members of society through targeted bursaries and support.",
     },
     {
-        image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2670&auto=format&fit=crop",
+        image: "/images/hospital_interior_1772435926459.png",
         badge: "Health & Well-being",
         title1: "Critical Care",
         titleHighlight: "Accessible",
@@ -82,7 +82,7 @@ export function HeroCarousel() {
                     <div className="flex flex-wrap gap-4 pt-4">
                         <Link href="/donate">
                             <Button size="lg" className="rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 h-14 px-8 font-semibold transition-all hover:">
-                                Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
+                                Donate <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
                         </Link>
                         <Link href="/about">
