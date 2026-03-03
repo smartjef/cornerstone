@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/button";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/blog", label: "Activities" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -48,9 +48,9 @@ export function Header() {
             <div className="flex items-center">
               <ThemeToggle />
             </div>
-            <Link href="/donate" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="hidden md:inline-flex">
               <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-4 md:px-6 font-bold tracking-wide">
-                Donate
+                Contact Us
               </Button>
             </Link>
             <Button
@@ -68,7 +68,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl md:hidden pt-24 px-6 flex flex-col h-screen">
           <nav className="flex flex-col gap-6 w-full py-8 border-y border-slate-100 dark:border-slate-800">
-            {navItems.map((item) => {
+            {[...navItems, { href: "/contact", label: "Contact Us" }].map((item) => {
               const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
               return (
                 <Link

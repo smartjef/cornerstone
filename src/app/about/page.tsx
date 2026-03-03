@@ -1,6 +1,7 @@
 import { ShieldCheck, Heart, Compass, Shield } from "lucide-react";
 import Image from "next/image";
-import { trustees, missionPillars } from "@/lib/content";
+import Link from "next/link";
+import { missionPillars, boardOfTrustees, managementTeam } from "@/lib/content";
 
 export default function AboutPage() {
   return (
@@ -28,9 +29,9 @@ export default function AboutPage() {
       <section className="relative -mt-12 z-20 max-w-7xl mx-auto px-6 pb-24">
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { title: "Vision", icon: Compass, desc: "Thriving communities where every person can access health, opportunity, and hope." },
-            { title: "Mission", icon: Heart, desc: "Deliver trusted, evidence-informed support in healthcare, education, social relief, and water access." },
-            { title: "Values", icon: ShieldCheck, desc: "Faith, integrity, transparency, collaboration, and community dignity." }
+            { title: "Vision", icon: Compass, desc: "Thriving communities where the most vulnerable can access quality education, clean water & sanitation, and dignified humanitarian support." },
+            { title: "Mission", icon: Heart, desc: "Deliver fit for the future education, water & humanitarian solutions." },
+            { title: "Values", icon: ShieldCheck, desc: "Compassion, stewardship, service and dignity." }
           ].map((item, i) => (
             <div key={i} className="bg-white dark:bg-slate-900 rounded-3xl p-8 dark:border border-slate-100 dark:border-slate-800 hover:-translate-y-2 transition-transform duration-300">
               <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/50 flex items-center justify-center mb-6 text-emerald-600">
@@ -51,7 +52,7 @@ export default function AboutPage() {
           <p className="text-lg text-slate-600 dark:text-slate-400">Practical, accountable interventions designed to strengthen vulnerable communities across Kenya.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {missionPillars.map((pillar, idx) => (
             <div key={idx} className="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 flex items-start gap-6 group hover:transition-shadow">
               <div className="font-bold text-3xl text-emerald-200 dark:text-emerald-900/50 group-hover:text-emerald-500 transition-colors">0{idx + 1}</div>
@@ -64,53 +65,70 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership Section */}
+      {/* Board of Trustees */}
       <section className="max-w-7xl mx-auto px-6 py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 w-full">
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase">Leadership</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Our Board & Trustees</h3>
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Our Board of Trustees</h3>
           <p className="text-lg text-slate-600 dark:text-slate-400">Guided by experience and a strict commitment to the foundation&apos;s ethos.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Founder */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-            <div className="h-72 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
-              <Image
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
-                alt="Julius Migos Ogamba"
-                width={800} height={800}
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-            <div className="p-6 flex-1 flex flex-col items-center flex-grow">
-              <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2 bg-emerald-50 dark:bg-emerald-900/40 px-3 py-1 text-center rounded-full">Founder</span>
-              <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 text-center">Julius Migos Ogamba</h4>
-              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-center">
-                Steward of the foundation&apos;s strategic direction and institutional values, ensuring alignment with the core mission.
-              </p>
-            </div>
-          </div>
-
-          {/* Trustees */}
-          {trustees.map((trustee, index) => (
-            <div key={trustee} className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-2 transition-transform duration-300">
-              <div className="h-72 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+          {boardOfTrustees.map((member) => (
+            <Link
+              key={member.slug}
+              href={`/team/${member.slug}`}
+              className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-2 transition-all duration-300"
+            >
+              <div className="h-64 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <Image
-                  src={`https://source.unsplash.com/random/800x800/?african,man,portrait&sig=${index + 10}`}
-                  alt={trustee}
+                  src={member.image}
+                  alt={member.name}
                   width={800} height={800}
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="p-6 flex-1 flex flex-col items-center flex-grow">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 bg-slate-100 dark:bg-slate-800 px-3 py-1 text-center rounded-full">Trustee</span>
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 text-center">{trustee}</h4>
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed text-center">
-                  Providing governance oversight, ensuring accountability, and driving community impact.
-                </p>
+              <div className="p-5 flex flex-col items-center text-center">
+                <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2 bg-emerald-50 dark:bg-emerald-900/40 px-3 py-1 rounded-full">
+                  {member.position}
+                </span>
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">{member.name}</h4>
               </div>
-            </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Management Team */}
+      <section className="max-w-7xl mx-auto px-6 py-24 border-t border-slate-200 dark:border-slate-800 relative z-10 w-full">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase">Operations</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Our Management Team</h3>
+          <p className="text-lg text-slate-600 dark:text-slate-400">Our management team consists of dedicated volunteers, highly qualified in their profession and passionate for the objectives of the Cornerstone Foundation.</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {managementTeam.map((member) => (
+            <Link
+              key={member.slug}
+              href={`/team/${member.slug}`}
+              className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 flex flex-col group hover:-translate-y-2 transition-all duration-300"
+            >
+              <div className="h-64 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={800} height={800}
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-5 flex flex-col items-center text-center">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">
+                  {member.position}
+                </span>
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">{member.name}</h4>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -121,7 +139,7 @@ export default function AboutPage() {
           <div className="inline-flex items-center justify-center p-4 bg-emerald-800 rounded-full mb-4">
             <Shield className="w-8 h-8 text-emerald-300" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white">Governance & Ethos</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white">Governance &amp; Ethos</h2>
           <div className="space-y-6 text-lg text-emerald-50 max-w-2xl mx-auto leading-relaxed font-light">
             <p>
               Governance structures prioritize accountability, legal compliance, and responsible program execution. Strategic oversight is provided by trustees, with reporting designed for donor clarity and public trust.

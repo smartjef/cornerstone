@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles, GraduationCap, HeartPulse, Droplets, Users, Shield, Award } from "lucide-react";
+import { ArrowRight, Sparkles, GraduationCap, Droplets, Users, Shield, Award } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { updates } from "@/lib/content";
 import { HeroCarousel } from "@/components/hero-carousel";
 
@@ -27,12 +26,11 @@ export default function HomePage() {
             <p className="text-lg text-slate-600 dark:text-slate-400">Delivering sustainable, accountable impact through focused programs.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: GraduationCap, title: "Education", desc: "Scholarships and bursaries ensuring access for the most vulnerable." },
-              { icon: HeartPulse, title: "Healthcare", desc: "Construction and maintenance of critical medical clinics." },
-              { icon: Users, title: "Relief", desc: "Direct support for the destitute, aged, infirm, widows, and orphans." },
-              { icon: Droplets, title: "Clean Water", desc: "Developing reliable sanitation and water infrastructure." }
+              { icon: GraduationCap, title: "Education", desc: "Access to quality education for the most vulnerable." },
+              { icon: Users, title: "Humanitarian Support", desc: "Direct support for the destitute, aged, infirm, widows, and orphans." },
+              { icon: Droplets, title: "Clean Water", desc: "Access to clean water and sanitation." }
             ].map((pillar, i) => (
               <div key={i} className="group relative bg-white dark:bg-slate-950 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:hover:-translate-y-2 transition-all duration-300">
                 <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none transition-opacity duration-300 group-hover:opacity-10">
@@ -58,7 +56,7 @@ export default function HomePage() {
             {/* Soft decorative background shape */}
             <div className="absolute -inset-4 bg-emerald-100 dark:bg-emerald-900/20 rounded-[3rem] transform -rotate-3 transition-transform hover:rotate-0 duration-500" />
             <Image
-              src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=2670&auto=format&fit=crop"
+              src="/images/foundation_community_impact.png"
               alt="Impact Foundation"
               width={2670} height={1500}
               className="relative rounded-3xl object-cover h-[500px] w-full"
@@ -116,8 +114,8 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase">Our Impact in Action</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Witness The Change</h3>
-            <p className="text-lg text-slate-600 dark:text-slate-400">See firsthand how our programs are changing lives across communities in Kenya.</p>
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">The Cornerstone Aspiration</h3>
+            <p className="text-lg text-slate-600 dark:text-slate-400">The sowing seed for Impacts.</p>
           </div>
 
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 pt-[56.25%]">
@@ -136,7 +134,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Latest Updates (Clean Masonry-like presentation) */}
+      {/* 3. Latest Updates (Clean Masonry-like presentation) */}
       <section className="w-full py-24 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
           <div className="flex flex-col sm:flex-row items-baseline justify-between gap-4">
@@ -228,37 +226,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Minimalist CTA */}
-      <section className="w-full relative py-0">
-        <div className="relative max-w-7xl mx-auto px-6 -mb-24 z-20">
-          <div className="bg-emerald-600 rounded-[2.5rem] p-10 md:p-16 text-center text-white overflow-hidden relative">
-            {/* Decorative circles */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
-            <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Ready to make an impact?</h2>
-              <p className="text-emerald-50 text-lg md:text-xl font-light">
-                Join us in providing education, healthcare, and vital resources to those who need it most.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Link href="/donate">
-                  <Button size="lg" className="rounded-full bg-white text-emerald-900 hover:bg-slate-100 h-14 px-10 font-bold ">
-                    Donate Today
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button size="lg" variant="outline" className="rounded-full bg-emerald-700/50 border-emerald-500 hover:bg-emerald-700 hover:border-emerald-400 text-white h-14 px-10 font-semibold backdrop-blur-sm">
-                    Contact Foundation
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Spacer to visually hold the overlapping CTA above the footer */}
-        <div className="h-48 bg-white dark:bg-slate-950 w-full" />
-      </section>
 
     </div>
   );

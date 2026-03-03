@@ -97,22 +97,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-
         </div>
-
-        {/* Map Section */}
-        <div className="mt-12 lg:mt-16 bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-100 dark:border-slate-800">
-          <div className="w-full h-80 md:h-[450px] bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden relative">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127641.17044258445!2d36.76499689115439!3d-1.303035980636506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi!5e0!3m2!1sen!2ske!4v1772385496154!5m2!1sen!2ske"
-              className="w-full h-full border-0"
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </div>
-
       </section>
     </div>
   );

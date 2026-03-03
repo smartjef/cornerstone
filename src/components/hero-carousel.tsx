@@ -3,35 +3,26 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const SLIDES = [
     {
-        image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2670&auto=format&fit=crop",
-        badge: "Empowering Communities",
+        image: "/images/hero_scholarship_main.png",
+        badge: "Empowering Through Education",
         title1: "Building a",
         titleHighlight: "Brighter",
         title2: "Future",
-        desc: "The Cornerstone Foundation provides critical support for education, healthcare, vulnerable groups, and clean water infrastructure across Kenya.",
+        desc: "The Cornerstone Foundation provides scholarships and bursaries ensuring every child, regardless of circumstance, has access to quality education across Kenya.",
     },
     {
-        image: "/images/school_building_1772435941123.png",
+        image: "/images/school_building_premium.png",
         badge: "Educating the Youth",
         title1: "Scholarships for",
         titleHighlight: "Every",
         title2: "Child",
         desc: "Ensuring access to quality education for the most vulnerable members of society through targeted bursaries and support.",
     },
-    {
-        image: "/images/hospital_interior_1772435926459.png",
-        badge: "Health & Well-being",
-        title1: "Critical Care",
-        titleHighlight: "Accessible",
-        title2: "to All",
-        desc: "Construction and maintenance of medical clinics to serve individuals in areas with restricted healthcare access.",
-    }
 ];
 
 export function HeroCarousel() {
@@ -80,11 +71,6 @@ export function HeroCarousel() {
                     </div>
 
                     <div className="flex flex-wrap gap-4 pt-4">
-                        <Link href="/donate">
-                            <Button size="lg" className="rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 h-14 px-8 font-semibold transition-all hover:">
-                                Donate <ArrowRight className="ml-2 h-5 w-5" />
-                            </Button>
-                        </Link>
                         <Link href="/about">
                             <Button size="lg" variant="outline" className="rounded-full text-white border-white/30 hover:bg-white/10 hover:border-white bg-transparent h-14 px-8 font-semibold transition-all backdrop-blur-sm">
                                 Discover Our Mission

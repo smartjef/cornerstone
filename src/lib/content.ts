@@ -1,9 +1,5 @@
 export const missionPillars = [
   {
-    title: "Medical care & clinics",
-    description: "Expand access to quality care through mobile clinics, referral support, and preventive services.",
-  },
-  {
     title: "Relief for vulnerable groups",
     description: "Support destitute families, aged persons, widows, and orphans with dignified, practical interventions.",
   },
@@ -17,72 +13,134 @@ export const missionPillars = [
   },
 ];
 
-export const categories = ["All", "Healthcare", "Education", "Water", "Relief", "Community"];
-export const allTags = ["outreach", "bursary", "rural", "health", "water", "youth", "women"];
+export const categories = ["All", "Education", "Water", "Relief"];
+export const allTags = ["bursary", "rural", "water", "youth", "education"];
 
 export const updates = [
   {
-    slug: "community-health-clinic-drive",
-    title: "Community Health Clinic Drive in Kisii",
-    excerpt: "A two-day outreach delivered screenings and primary consultations to over 600 residents.",
-    content: "Our recent free medical camp in Kisii provided critical healthcare access to over 600 residents who otherwise struggle to reach specialized care. A team of dedicated volunteer doctors, nurses, and pharmacists worked tirelessly to offer screenings, pediatric care, and chronic disease management. This initiative not only addressed immediate health concerns but also emphasized preventive education.",
+    slug: "bursary-distribution-2026",
+    title: "2026 Bursary Distribution Reaches 120 Students",
+    excerpt: "Cornerstone Foundation hands out full school bursaries to 120 students from underserved households across the region.",
+    content: "This year's bursary distribution marks a significant milestone for the Cornerstone Foundation. Over 120 students from destitute, widowed, and orphaned households received full bursaries covering school fees, uniforms, textbooks, and mentorship support. Each recipient was carefully selected through a community-based vetting process to ensure the most vulnerable are prioritised. Education is the foundation's greatest tool for lasting change.",
     date: "January 15, 2026",
-    category: "Healthcare",
-    tags: ["outreach", "health", "community"],
-    image: "/images/activity_health_1772437869126.png",
-    author: "Dr. Sarah Kemunto",
+    category: "Education",
+    tags: ["bursary", "youth", "education"],
+    image: "/images/foundation_community_impact.png",
+    author: "Foundation Board",
     views: 1240,
     comments: 15,
   },
   {
     slug: "scholarship-intake-2026",
-    title: "Scholarship Intake Opens for 2026",
-    excerpt: "Applications are now open for students from underserved households.",
-    content: "Education remains the greatest equalizer. Today, we are proud to announce the opening of our 2026 scholarship applications. Aimed at exceptionally bright students from vulnerable backgrounds, these bursaries cover full tuition, uniforms, and mentorship programs through high school. We believe impossible odds can be overcome when standard hurdles are removed.",
+    title: "Scholarship Applications Open for 2026",
+    excerpt: "Applications are now open for bright students from underserved households across Kenya.",
+    content: "Education remains the greatest equalizer. We are proud to announce the opening of our 2026 scholarship intake. Aimed at exceptionally bright students from vulnerable backgrounds, these scholarships cover full tuition, uniforms, and a structured mentorship programme through to completion of high school. No child should be denied a future simply because of circumstance. Eligible candidates are encouraged to apply through their school's administration office before the deadline.",
     date: "February 2, 2026",
     category: "Education",
     tags: ["bursary", "youth", "education"],
-    image: "https://source.unsplash.com/random/1200x800/?kenyan,students&sig=1",
+    image: "/images/school_building_premium.png",
     author: "Foundation Board",
     views: 3450,
     comments: 42,
   },
   {
     slug: "water-access-expansion",
-    title: "Clean Water Access Expansion",
-    excerpt: "Three rural communities now have access to improved water points.",
-    content: "Water is life. We've successfully completed the drilling and installation of three new high-capacity boreholes equipped with solar pumps. These water points now serve over 2,500 rural community members, drastically reducing waterborne diseases and freeing up time—especially for young girls—to focus on their education rather than walking miles for water.",
+    title: "Clean Water Project Keeps Girls in School",
+    excerpt: "Three new boreholes free hundreds of children from daily water walks — giving them time to learn.",
+    content: "The lack of clean water has long kept children, especially girls, out of school in rural Kenya. After completion of three new solar-powered boreholes serving over 2,500 community members, school attendance among girls in the affected villages has risen sharply. With water now accessible minutes from home, families no longer depend on children to walk miles each day. This infrastructural investment is, at its heart, an investment in education.",
     date: "February 28, 2026",
-    category: "Water",
-    tags: ["rural", "water"],
-    image: "https://source.unsplash.com/random/1200x800/?kenya,village,water&sig=2",
+    category: "Education",
+    tags: ["rural", "water", "education"],
+    image: "/images/borehole_clean_water.png",
     author: "Tech & Ops Team",
     views: 890,
     comments: 8,
+  }
+];
+
+export type TeamMember = {
+  slug: string;
+  name: string;
+  position: string;
+  image: string;
+  bio: string;
+};
+
+export const boardOfTrustees: TeamMember[] = [
+  {
+    slug: "julius-migos-ogamba",
+    name: "Julius Migos Ogamba",
+    position: "Founder",
+    image: "/images/team_placeholder.png",
+    bio: "Steward of the foundation's strategic direction and institutional values, ensuring alignment with the core mission of serving the most vulnerable in society.",
   },
   {
-    slug: "women-empowerment-seminar",
-    title: "Women's Economic Empowerment Seminar",
-    excerpt: "Equipping widows and single mothers with financial literacy and micro-loan access.",
-    content: "Empowering women transforms entire communities. We hosted a 3-day economic empowerment seminar targeted at widows and single mothers. The seminar covered foundational business skills, savings strategies, and culminated in the disbursement of micro-loans to 50 prospective entrepreneurs to start small trades.",
-    date: "March 1, 2026",
-    category: "Relief",
-    tags: ["women", "community"],
-    image: "https://source.unsplash.com/random/1200x800/?kenyan,women,market&sig=3",
-    author: "Esther Wanjiku",
-    views: 1105,
-    comments: 21,
+    slug: "job-bogonko-mongaare",
+    name: "Job Bogonko Monga'are",
+    position: "Trustee",
+    image: "/images/team_placeholder.png",
+    bio: "Provides governance oversight and ensures accountability across all foundation programmes, driving community impact with integrity and diligence.",
+  },
+  {
+    slug: "joshua-wabwire",
+    name: "Joshua Wabwire",
+    position: "Trustee",
+    image: "/images/team_placeholder.png",
+    bio: "Brings extensive experience in community development and social governance to the board, championing evidence-based approaches to humanitarian support.",
+  },
+  {
+    slug: "ronald-gitobu-mworia",
+    name: "Ronald Gitobu Mworia",
+    position: "Trustee",
+    image: "/images/team_placeholder.png",
+    bio: "Oversees legal compliance and institutional policy, ensuring the foundation adheres to its Declaration of Trust and statutory obligations.",
   },
 ];
 
-export const trustees = [
-  "Job Bogonko Monga’are",
-  "Joshua Wabwire",
-  "Ronald Gitobu Mworia",
+export const managementTeam: TeamMember[] = [
+  {
+    slug: "chief-executive-director",
+    name: "TBA",
+    position: "Chief Executive Director",
+    image: "/images/team_placeholder.png",
+    bio: "Leads the overall strategic direction and operational excellence of the Cornerstone Foundation, ensuring mission alignment across all departments.",
+  },
+
+  {
+    slug: "program-director",
+    name: "TBA",
+    position: "Program Director",
+    image: "/images/team_placeholder.png",
+    bio: "Oversees the design, delivery, and evaluation of all foundation programmes, ensuring quality and impact in education, water, and humanitarian initiatives.",
+  },
+
+  {
+    slug: "logistics-manager",
+    name: "TBA",
+    position: "Logistics Manager",
+    image: "/images/team_placeholder.png",
+    bio: "Manages procurement, supply chain, and field logistics to ensure smooth and efficient delivery of resources to beneficiary communities.",
+  },
+  {
+    slug: "communities-manager",
+    name: "TBA",
+    position: "Communities Manager",
+    image: "/images/team_placeholder.png",
+    bio: "Builds and sustains relationships with community partners, local leaders, and beneficiaries to ensure inclusive and community-driven programming.",
+  },
+  {
+    slug: "strategy-mobilization-manager",
+    name: "TBA",
+    position: "Strategy & Mobilization Manager",
+    image: "/images/team_placeholder.png",
+    bio: "Drives strategic planning and community mobilization efforts, helping the foundation scale its reach and deepen its impact across Kenya.",
+  },
+  {
+    slug: "funds-development-manager",
+    name: "TBA",
+    position: "Funds Development Manager",
+    image: "/images/team_placeholder.png",
+    bio: "Leads fundraising strategy, donor relations, and grant acquisition to secure sustainable funding for all foundation programmes.",
+  },
 ];
 
-export const donationTiers = [
-  { tier: "KES 2,500", impact: "Basic medical screening for one beneficiary." },
-  { tier: "KES 10,000", impact: "School bursary support and essentials for one learner." },
-  { tier: "KES 25,000", impact: "Shared contribution toward a community water and sanitation activity." },
-];
