@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -22,11 +23,19 @@ export function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-white/20 dark:border-slate-800 transition-all duration-300">
         <div className="container flex h-20 items-center justify-between gap-4">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-bold tracking-tight text-emerald-600 dark:text-emerald-500 text-2xl flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110">
+              <Image
+                src="/logo.png"
+                alt="Cornerstone Foundation Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            Cornerstone
+            <span className="font-bold tracking-tight text-emerald-600 dark:text-emerald-500 text-xl md:text-2xl">
+              Cornerstone
+            </span>
           </Link>
 
           <nav className="hidden gap-8 text-sm md:flex">

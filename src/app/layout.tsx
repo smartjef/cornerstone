@@ -14,6 +14,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cornerstone.or.ke'),
   title: {
     default: "The Cornerstone Foundation | Empowering Communities",
     template: "%s | Cornerstone Foundation",
@@ -27,10 +28,10 @@ export const metadata: Metadata = {
     siteName: "Cornerstone Foundation",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Cornerstone Foundation Community Impact Preview",
+        alt: "The Cornerstone Foundation Logo",
       },
     ],
     locale: "en_KE",
@@ -40,7 +41,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Cornerstone Foundation",
     description: "Credible, transparent and compassionate community impact.",
-    images: ["https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200"],
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png" },
+    ],
   },
 };
 

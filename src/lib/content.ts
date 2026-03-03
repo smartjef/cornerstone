@@ -1,15 +1,15 @@
 export const missionPillars = [
   {
-    title: "Relief for vulnerable groups",
-    description: "Support destitute families, aged persons, widows, and orphans with dignified, practical interventions.",
+    title: "Education",
+    description: "Access to quality education for the most vulnerable.",
   },
   {
-    title: "Education scholarships & bursaries",
-    description: "Unlock long-term opportunity by supporting school fees, supplies, and mentorship pathways.",
+    title: "Humanitarian Support",
+    description: "Direct support for the destitute, aged, infirm, widows, and orphans.",
   },
   {
-    title: "Clean water & sanitation",
-    description: "Improve community health outcomes through safe water projects and sanitation awareness programs.",
+    title: "Clean Water",
+    description: "Access to clean water and sanitation.",
   },
 ];
 
