@@ -5,15 +5,12 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 
 const grid = [
-    { src: "/images/school_building_premium.png", caption: "Modern Primary School", category: "Education", span: 2 },
-    { src: "/images/gallery_classroom_interior.png", caption: "Equipped Classroom", category: "Education", span: 1 },
-    { src: "/images/gallery_school_library.png", caption: "School Library", category: "Education", span: 1 },
-    { src: "/images/gallery_school_exterior.png", caption: "School Building & Grounds", category: "Education", span: 1 },
-    { src: "/images/gallery_borehole_village.png", caption: "Solar-Powered Borehole", category: "Clean Water", span: 2 },
-    { src: "/images/gallery_water_tap.png", caption: "Clean Water Access Point", category: "Clean Water", span: 1 },
-    { src: "/images/gallery_sanitation_block.png", caption: "School Sanitation Block", category: "Clean Water", span: 1 },
-    { src: "/images/foundation_community_impact.png", caption: "Bursary Distribution", category: "Humanitarian", span: 2 },
-    { src: "/images/borehole_clean_water.png", caption: "Borehole Installation", category: "Clean Water", span: 1 },
+    { src: "/images/founder-migosi-event.jpeg", caption: "Founder Migosi at Community Event", category: "Humanitarian", span: 1 },
+    { src: "/images/bibleless-run-flagoff.jpeg", caption: "Bibleless Run Flag-off Ceremony", category: "Humanitarian", span: 2 },
+    { src: "/images/bibleless-run-participants.jpeg", caption: "Community Participation in Bibleless Run", category: "Humanitarian", span: 1 },
+    { src: "/images/president-ruto-founder-migosi-graduation.jpeg", caption: "President Ruto and Founder Migosi at Graduation", category: "Education", span: 1 },
+    { src: "/images/team/founder.jpeg", caption: "Founder Julius Migos Ogamba", category: "Leadership", span: 1 },
+    { src: "/images/bibleless-run-flagoff.jpeg", caption: "Supporting Local Communities", category: "Humanitarian", span: 1 },
 ];
 
 export default function GalleryPage() {

@@ -56,8 +56,8 @@ export default function HomePage() {
             {/* Soft decorative background shape */}
             <div className="absolute -inset-4 bg-emerald-100 dark:bg-emerald-900/20 rounded-[3rem] transform -rotate-3 transition-transform hover:rotate-0 duration-500" />
             <Image
-              src="/images/foundation_community_impact.png"
-              alt="Impact Foundation"
+              src="/images/bibleless-run-flagoff.jpeg"
+              alt="Community Impact"
               width={2670} height={1500}
               className="relative rounded-3xl object-cover h-[500px] w-full"
             />
@@ -81,10 +81,10 @@ export default function HomePage() {
                 <Award className="w-4 h-4" /> The Foundation
               </h2>
               <h3 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white leading-[1.15]">
-                Guided by <span className="text-emerald-500">Integrity</span> and Compassion.
+                Impact Through <span className="text-emerald-500">Community</span> Action.
               </h3>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed pt-2">
-                Established to serve the most vulnerable, The Cornerstone Foundation operates under a strict Declaration of Trust. We believe in evidence-driven programs implemented with trusted local partners.
+                Whether through community flag-offs or educational sponsorships, The Cornerstone Foundation operates under a strict Declaration of Trust to serve the most vulnerable across Kenya.
               </p>
             </div>
 
@@ -119,17 +119,15 @@ export default function HomePage() {
           </div>
 
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 pt-[56.25%]">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute top-0 left-0 w-full h-full object-cover"
-            >
-              <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+            <iframe
+              src="https://www.youtube.com/embed/yZYgHgClCzY?si=wUXVlVFUOPPjp0nQ"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -189,19 +187,19 @@ export default function HomePage() {
                 text: "The bursary from Cornerstone Foundation allowed me to finish my high school education when my family had lost all hope. I am now pursuing nursing.",
                 author: "Grace Akinyi",
                 role: "Scholarship Recipient",
-                image: "/images/avatar_grace_1772437833562.png"
+                image: "/images/team/placeholder.png"
               },
               {
                 text: "Before the new borehole, we walked miles every day for water that wasn't even safe. Now, our children are healthier and we have more time to farm.",
                 author: "Joseph Mathenge",
                 role: "Village Elder, Laikipia",
-                image: "/images/avatar_joseph_1772438049897.png"
+                image: "/images/testimonies/avatar_joseph.png"
               },
               {
                 text: "The free medical camp came right when my son was very ill. The doctors not only treated him but gave us medicine we could never have afforded.",
                 author: "Mary Atieno",
                 role: "Community Member",
-                image: "/images/avatar_mary_1772437851425.png"
+                image: "/images/testimonies/avatar_mary.png"
               }
             ].map((testimonial, i) => (
               <div key={i} className="bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 relative">
