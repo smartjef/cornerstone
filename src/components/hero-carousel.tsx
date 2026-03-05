@@ -9,12 +9,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
  * Hero Carousel slides using only original Cornerstone Foundation content.
  */
 const SLIDES = [
-    { image: "/images/hero_scholarship_main.png", label: "Empowering Through Education" },
-    { image: "/images/school_building_premium.png", label: "Scholarships for The Most Vulnerable." },
-    { image: "/images/gallery_borehole_village.png", label: "Clean Water for Communities" },
-    { image: "/images/gallery_classroom_interior.png", label: "Quality Education" },
-    { image: "/images/foundation_community_impact.png", label: "Humanitarian Support" },
-    { image: "/images/gallery_school_exterior.png", label: "Building Futures" },
+    { image: "/images/bibleless-run-flagoff.jpeg", label: "Cornerstone Foundation: Impact Through Community Action" },
+    { image: "/images/president-ruto-founder-migosi-graduation.jpeg", label: "Empowering The Next Generation of Leaders" },
+    { image: "/images/bibleless-run-participants.jpeg", label: "Supporting Literacy and Bible Translation" },
+    { image: "/images/founder-migosi-event.jpeg", label: "Integrity and Compassion in Service" },
 ];
 
 export function HeroCarousel() {

@@ -7,14 +7,11 @@ import { HomeImageSlider } from "@/components/home-image-slider";
 
 /* ─── Scrolling logo strip images (gallery images as stand-ins) ─── */
 const STRIP_IMAGES = [
-  "/images/gallery_classroom_interior.png",
-  "/images/gallery_school_library.png",
-  "/images/gallery_borehole_village.png",
-  "/images/gallery_water_tap.png",
-  "/images/gallery_sanitation_block.png",
-  "/images/gallery_school_exterior.png",
-  "/images/school_building_premium.png",
-  "/images/foundation_community_impact.png",
+  "/images/bibleless-run-flagoff.jpeg",
+  "/images/bibleless-run-participants.jpeg",
+  "/images/president-ruto-founder-migosi-graduation.jpeg",
+  "/images/founder-migosi-event.jpeg",
+  "/images/team/founder.jpeg"
 ];
 
 const PILLARS = [
@@ -143,18 +140,17 @@ export default function HomePage() {
       </section>
 
       {/* Full-width Video Section (Background style) */}
-      <section className="w-full h-[60vh] min-h-[400px] relative overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover"
-        >
-          <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-black/20" />
+      <section className="w-full h-[60vh] min-h-[400px] relative overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 pointer-events-none">
+          <iframe
+            src="https://www.youtube.com/embed/yZYgHgClCzY?autoplay=1&mute=1&loop=1&playlist=yZYgHgClCzY&controls=0&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
+            title="Background Impact Video"
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            className="absolute top-1/2 left-1/2 w-[120%] h-[120%] -translate-x-1/2 -translate-y-1/2 object-cover"
+          ></iframe>
+        </div>
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
       </section>
 
       {/* 5. Scrolling Image Strip */}

@@ -4,12 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const IMAGES = [
-    "/images/foundation_community_impact.png",
-    "/images/gallery_classroom_interior.png",
-    "/images/gallery_borehole_village.png",
-    "/images/gallery_school_library.png",
-    "/images/gallery_sanitation_block.png",
-    "/images/school_building_premium.png",
+    "/images/bibleless-run-flagoff.jpeg",
+    "/images/bibleless-run-participants.jpeg",
+    "/images/president-ruto-founder-migosi-graduation.jpeg",
+    "/images/founder-migosi-event.jpeg",
 ];
 
 export function HomeImageSlider() {
