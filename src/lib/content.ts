@@ -13,46 +13,68 @@ export const missionPillars = [
   },
 ];
 
+export type GalleryItem = {
+  src: string;
+  caption: string;
+  category: string;
+  span: number;
+};
+
+export const gallery: GalleryItem[] = [
+  { src: "/images/modern-school-exterior.jpg", caption: "New School Infrastructure", category: "Education", span: 2 },
+  { src: "/images/bibleless-run-flagoff.jpeg", caption: "Bibleless Run Flag-off Ceremony", category: "Humanitarian", span: 2 },
+  { src: "/images/modern-classroom-1.jpg", caption: "Engaged Students in New Facilities", category: "Education", span: 1 },
+  { src: "/images/president-ruto-founder-migosi-graduation.jpeg", caption: "President Ruto and Founder Migosi at Graduation", category: "Education", span: 1 },
+  { src: "/images/team/founder.jpeg", caption: "Founder Julius Migos Ogamba", category: "Leadership", span: 1 },
+  { src: "/images/borehole_clean_water.png", caption: "Clean Water Access Projects", category: "Water", span: 1 },
+  { src: "/images/gallery_borehole_village.png", caption: "Community Water Point Installation", category: "Water", span: 2 },
+  { src: "/images/modern-classroom.jpg", caption: "Modern Learning Environments", category: "Education", span: 1 },
+  { src: "/images/founder-migosi-event.jpeg", caption: "Founder Migosi at Community Event", category: "Humanitarian", span: 1 },
+  { src: "/images/modern-school-exterior-1.jpg", caption: "Completed School Building Project", category: "Education", span: 1 },
+  { src: "/images/bibleless-run-participants.jpeg", caption: "Community Participation in Bibleless Run", category: "Humanitarian", span: 1 },
+  { src: "/images/empty-classroom.jpg", caption: "Preparing for New Students", category: "Education", span: 1 },
+];
+
 export const categories = ["All", "Education", "Water", "Relief"];
 export const allTags = ["bursary", "rural", "water", "youth", "education"];
 
 export const updates = [
   {
-    slug: "bibleless-run-2026",
-    title: "Founder Migosi & Governor Wavinya Ndeti Lead Machakos BTL Run",
-    excerpt: "A vibrant morning at Machakos High School as the Cornerstone community runs to support Bible translation and literacy.",
-    content: "The Machakos BTL Run and Walk for the Bibleless saw a powerful show of unity and purpose. Our Founder, Dr. Julius Migos Ogamba, was joined by Machakos Governor, H.E. Wavinya Ndeti, at Machakos High School to champion the cause of indigenous language literacy. The event raised crucial funds to support BTL’s ongoing work in completing Bible translations for over twenty Kenyan communities, ensuring that the Word is accessible to all in their heart languages.",
+    slug: "bursary-distribution-2026",
+    title: "2026 Bursary Distribution Reaches 120 Students",
+    excerpt: "Cornerstone Foundation hands out full school bursaries to 120 students from underserved households across the region.",
+    content: "This year's bursary distribution marks a significant milestone for the Cornerstone Foundation. Over 120 students from destitute, widowed, and orphaned households received full bursaries covering school fees, uniforms, textbooks, and mentorship support. Each recipient was carefully selected through a community-based vetting process to ensure the most vulnerable are prioritised. Education is the foundation's greatest tool for lasting change.",
     date: "January 15, 2026",
-    category: "Humanitarian",
-    tags: ["community", "run", "literacy"],
-    image: "/images/bibleless-run-participants.jpeg",
-    author: "Events Team",
+    category: "Education",
+    tags: ["bursary", "youth", "education"],
+    image: "/images/foundation_community_impact.png",
+    author: "Foundation Board",
     views: 1240,
     comments: 15,
   },
   {
-    slug: "graduation-ceremony-2026",
-    title: "Founder Migosi & President Ruto Champion Higher Education Excellence",
-    excerpt: "A landmark day as H.E. President William Ruto and Cornerstone Founder Dr. Julius Migos Ogamba lead the installation of new university leadership.",
-    content: "The Cornerstone Foundation's commitment to academic excellence and visionary governance was showcased on a national stage. Our Founder, Dr. Julius Migos Ogamba (Cabinet Secretary for Education), accompanied H.E. President William Ruto for the historic installation of the Co-operative University’s second Chancellor. This milestone in higher education governance mirrors the Foundation’s own mission: ensuring that institutions of learning are guided by visionary leaders committed to transformation and academic brilliance.",
+    slug: "scholarship-intake-2026",
+    title: "Scholarship Applications Open for 2026",
+    excerpt: "Applications are now open for bright students from underserved households across Kenya.",
+    content: "Education remains the greatest equalizer. We are proud to announce the opening of our 2026 scholarship intake. Aimed at exceptionally bright students from vulnerable backgrounds, these scholarships cover full tuition, uniforms, and a structured mentorship programme through to completion of high school. No child should be denied a future simply because of circumstance. Eligible candidates are encouraged to apply through their school's administration office before the deadline.",
     date: "February 2, 2026",
     category: "Education",
-    tags: ["graduation", "leadership", "education"],
-    image: "/images/president-ruto-founder-migosi-graduation.jpeg",
-    author: "Foundation Press",
+    tags: ["bursary", "youth", "education"],
+    image: "/images/modern-school-exterior.jpg",
+    author: "Foundation Board",
     views: 3450,
     comments: 42,
   },
   {
-    slug: "founder-community-engagement",
-    title: "Founder Migosi Engages with Local Community",
-    excerpt: "Julius Migos Ogamba spends the day in the field, listening to community needs and planning future interventions.",
-    content: "Integrity and local partnership are at the heart of the Cornerstone Foundation. Founder Julius Migos Ogamba recently held an extensive community engagement session to directly hear the challenges and aspirations of the families we serve. These field visits are crucial for ensuring our programs remain evidence-driven and community-prioritized, fostering a culture of mutual respect and accountable impact.",
+    slug: "water-access-expansion",
+    title: "Clean Water Project Keeps Girls in School",
+    excerpt: "Three new boreholes free hundreds of children from daily water walks — giving them time to learn.",
+    content: "The lack of clean water has long kept children, especially girls, out of school in rural Kenya. After completion of three new solar-powered boreholes serving over 2,500 community members, school attendance among girls in the affected villages has risen sharply. With water now accessible minutes from home, families no longer depend on children to walk miles each day. This infrastructural investment is, at its heart, an investment in education.",
     date: "February 28, 2026",
-    category: "Relief",
-    tags: ["founder", "community", "leadership"],
-    image: "/images/founder-migosi-event.jpeg",
-    author: "Ops Team",
+    category: "Education",
+    tags: ["rural", "water", "education"],
+    image: "/images/borehole_clean_water.png",
+    author: "Tech & Ops Team",
     views: 890,
     comments: 8,
   }

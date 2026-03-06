@@ -3,15 +3,9 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { gallery } from "@/lib/content";
 
-const grid = [
-    { src: "/images/bibleless-run-flagoff.jpeg", caption: "Bibleless Run Flag-off Ceremony", category: "Humanitarian", span: 2 },
-    { src: "/images/president-ruto-founder-migosi-graduation.jpeg", caption: "President Ruto and Founder Migosi at Graduation", category: "Education", span: 1 },
-    { src: "/images/bibleless-run-participants.jpeg", caption: "Community Participation in Bibleless Run", category: "Humanitarian", span: 1 },
-    { src: "/images/founder-migosi-event.jpeg", caption: "Founder Migosi at Community Event", category: "Humanitarian", span: 1 },
-    { src: "/images/team/founder.jpeg", caption: "Founder Julius Migos Ogamba", category: "Leadership", span: 1 },
-    { src: "/images/bibleless-run-flagoff.jpeg", caption: "Supporting Local Communities", category: "Humanitarian", span: 1 },
-];
+
 
 export default function GalleryPage() {
     const [lightbox, setLightbox] = useState<number | null>(null);
@@ -19,8 +13,8 @@ export default function GalleryPage() {
 
     const open = (i: number) => setLightbox(i);
     const close = () => { setLightbox(null); setFullscreen(false); };
-    const prev = useCallback(() => setLightbox((i) => i !== null ? (i - 1 + grid.length) % grid.length : null), []);
-    const next = useCallback(() => setLightbox((i) => i !== null ? (i + 1) % grid.length : null), []);
+    const prev = useCallback(() => setLightbox((i) => i !== null ? (i - 1 + gallery.length) % gallery.length : null), []);
+    const next = useCallback(() => setLightbox((i) => i !== null ? (i + 1) % gallery.length : null), []);
 
     useEffect(() => {
         if (lightbox === null) return;
@@ -33,7 +27,7 @@ export default function GalleryPage() {
         return () => window.removeEventListener("keydown", handler);
     }, [lightbox, prev, next]);
 
-    const current = lightbox !== null ? grid[lightbox] : null;
+    const current = lightbox !== null ? gallery[lightbox] : null;
 
     return (
         <div className="w-full bg-slate-950 min-h-screen">
@@ -78,7 +72,7 @@ export default function GalleryPage() {
                             }
                         }
                     `}</style>
-                    {grid.map((item, i) => (
+                    {gallery.map((item, i) => (
                         <div
                             key={i}
                             className={`gallery-cell-${item.span === 2 ? "wide" : "std"} relative overflow-hidden group cursor-pointer select-none`}
@@ -129,7 +123,7 @@ export default function GalleryPage() {
                                 <span className="text-xs font-bold tracking-widest text-emerald-400 uppercase">{current.category}</span>
                                 <p className="text-white font-semibold text-sm mt-0.5">{current.caption}</p>
                             </div>
-                            <span className="text-slate-400 text-sm">{lightbox + 1} / {grid.length}</span>
+                            <span className="text-slate-400 text-sm">{lightbox + 1} / {gallery.length}</span>
                         </div>
                     </div>
 

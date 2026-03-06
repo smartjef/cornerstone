@@ -10,7 +10,7 @@ export default function AboutPage() {
 
       {/* 1. Page Header (Starbase style: Dark image background with breadcrumbs) */}
       <section className="relative w-full pt-32 pb-20 bg-slate-900 border-b border-white/10" style={{
-        backgroundImage: 'url("/images/foundation_community_impact.png")',
+        backgroundImage: 'url("/images/hero_scholarship_main.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -59,7 +59,7 @@ export default function AboutPage() {
 
       {/* 3. Mission, Vision, and Core Values (Section with background image) */}
       <section className="w-full py-20 relative bg-emerald-900 border-y border-white/10" style={{
-        backgroundImage: 'url("/images/school_building_premium.png")',
+        backgroundImage: 'url("/images/modern-school-exterior.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'

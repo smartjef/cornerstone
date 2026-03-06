@@ -2,18 +2,17 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { gallery } from "@/lib/content";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /**
  * Hero Carousel slides using only original Cornerstone Foundation content.
  */
-const SLIDES = [
-    { image: "/images/bibleless-run-flagoff.jpeg", label: "Cornerstone Foundation: Impact Through Community Action" },
-    { image: "/images/president-ruto-founder-migosi-graduation.jpeg", label: "Empowering The Next Generation of Leaders" },
-    { image: "/images/bibleless-run-participants.jpeg", label: "Supporting Literacy and Bible Translation" },
-    { image: "/images/founder-migosi-event.jpeg", label: "Integrity and Compassion in Service" },
-];
+const SLIDES = gallery.slice(0, 4).map(item => ({
+    image: item.src,
+    label: item.caption
+}));
 
 export function HeroCarousel() {
     const [current, setCurrent] = useState(0);

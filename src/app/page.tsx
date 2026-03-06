@@ -1,18 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MessageCircle, MapPin, ArrowRight, GraduationCap, Droplets, Users, Award, Sparkles } from "lucide-react";
-import { updates } from "@/lib/content";
+import { Mail, Phone, MessageCircle, MapPin, ArrowRight, GraduationCap, Droplets, Users, Award, Sparkles, Play } from "lucide-react";
+import { updates, gallery } from "@/lib/content";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { HomeImageSlider } from "@/components/home-image-slider";
 
 /* ─── Scrolling logo strip images (gallery images as stand-ins) ─── */
-const STRIP_IMAGES = [
-  "/images/bibleless-run-flagoff.jpeg",
-  "/images/bibleless-run-participants.jpeg",
-  "/images/president-ruto-founder-migosi-graduation.jpeg",
-  "/images/founder-migosi-event.jpeg",
-  "/images/team/founder.jpeg"
-];
+const STRIP_IMAGES = gallery.map(item => item.src);
 
 const PILLARS = [
   { icon: GraduationCap, title: "Education", desc: "Access to quality education for the most vulnerable." },
@@ -139,18 +133,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Full-width Video Section (Background style) */}
-      <section className="w-full h-[60vh] min-h-[400px] relative overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 pointer-events-none">
-          <iframe
-            src="https://www.youtube.com/embed/yZYgHgClCzY?autoplay=1&mute=1&loop=1&playlist=yZYgHgClCzY&controls=0&rel=0&modestbranding=1&showinfo=0&iv_load_policy=3"
-            title="Background Impact Video"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            className="absolute top-1/2 left-1/2 w-[120%] h-[120%] -translate-x-1/2 -translate-y-1/2 object-cover"
-          ></iframe>
+      {/* Impact in Action - Image Placeholder with Play Icon */}
+      <section className="w-full h-[60vh] min-h-[400px] relative overflow-hidden bg-slate-900 group cursor-pointer">
+        <Image
+          src="/images/president-ruto-founder-migosi-graduation.jpeg"
+          alt="The Cornerstone Aspiration"
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+          <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-emerald-600/90 flex items-center justify-center text-white shadow-2xl transform transition-transform duration-300 group-hover:scale-110">
+            <Play className="w-8 h-8 md:w-12 md:h-12 fill-current ml-2" />
+          </div>
         </div>
-        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+        <div className="absolute bottom-12 left-0 w-full text-center z-10">
+          <p className="text-white text-xl md:text-2xl font-bold uppercase tracking-[0.2em] drop-shadow-lg">Impact in Action</p>
+        </div>
       </section>
 
       {/* 5. Scrolling Image Strip */}

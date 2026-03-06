@@ -2,13 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { gallery } from "@/lib/content";
 
-const IMAGES = [
-    "/images/bibleless-run-flagoff.jpeg",
-    "/images/bibleless-run-participants.jpeg",
-    "/images/president-ruto-founder-migosi-graduation.jpeg",
-    "/images/founder-migosi-event.jpeg",
-];
+const IMAGES = gallery.map(item => item.src).slice(4, 9);
 
 export function HomeImageSlider() {
     const [current, setCurrent] = useState(0);
