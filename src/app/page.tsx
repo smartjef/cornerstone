@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles, GraduationCap, Droplets, Users, Shield, Award } from "lucide-react";
+import { ArrowRight, Sparkles, GraduationCap, Droplets, Users, Shield, Award, Play } from "lucide-react";
 
 import { updates } from "@/lib/content";
 import { HeroCarousel } from "@/components/hero-carousel";
@@ -56,7 +56,7 @@ export default function HomePage() {
             {/* Soft decorative background shape */}
             <div className="absolute -inset-4 bg-emerald-100 dark:bg-emerald-900/20 rounded-[3rem] transform -rotate-3 transition-transform hover:rotate-0 duration-500" />
             <Image
-              src="/images/bibleless-run-flagoff.jpeg"
+              src="/images/foundation_community_impact.png"
               alt="Community Impact"
               width={2670} height={1500}
               className="relative rounded-3xl object-cover h-[500px] w-full"
@@ -118,16 +118,22 @@ export default function HomePage() {
             <p className="text-lg text-slate-600 dark:text-slate-400">The sowing seed for Impacts.</p>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 pt-[56.25%]">
-            <iframe
-              src="https://www.youtube.com/embed/yZYgHgClCzY?si=wUXVlVFUOPPjp0nQ"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="absolute top-0 left-0 w-full h-full"
-            ></iframe>
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 aspect-video group cursor-pointer">
+            <Image
+              src="/images/president-ruto-founder-migosi-graduation.jpeg"
+              alt="The Cornerstone Aspiration"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors duration-300 flex items-center justify-center">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-emerald-500/90 flex items-center justify-center text-white shadow-xl shadow-emerald-500/20 transform transition-transform duration-300 group-hover:scale-110">
+                <Play className="w-8 h-8 md:w-10 md:h-10 fill-current ml-1" />
+              </div>
+            </div>
+            {/* Soft Glow */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+              <div className="absolute inset-0 bg-emerald-500/10 mix-blend-overlay" />
+            </div>
           </div>
         </div>
       </section>

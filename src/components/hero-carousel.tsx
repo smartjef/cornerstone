@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 const SLIDES = [
     {
-        image: "/images/president-ruto-founder-migosi-graduation.jpeg",
+        image: "/images/hero_scholarship_main.png",
         badge: "Empowering Through Education",
         title1: "Building a",
         titleHighlight: "Brighter",
@@ -16,20 +16,12 @@ const SLIDES = [
         desc: "The Cornerstone Foundation provides scholarships and bursaries ensuring every child, regardless of circumstance, has access to quality education across Kenya.",
     },
     {
-        image: "/images/bibleless-run-flagoff.jpeg",
-        badge: "Community Action",
-        title1: "Impact Through",
-        titleHighlight: "Unity",
-        title2: "and Service",
-        desc: "Our community engagement initiatives, like the BTL Run, support literacy and translation projects that transform lives globally.",
-    },
-    {
-        image: "/images/bibleless-run-participants.jpeg",
-        badge: "Humanitarian Support",
-        title1: "A Legacy of",
-        titleHighlight: "Compassion",
-        title2: "and Growth",
-        desc: "We stand with the most vulnerable, providing direct support to the elderly, widows, and orphans through faith-driven social programs.",
+        image: "/images/modern-school-exterior.jpg",
+        badge: "Educating the Youth",
+        title1: "Scholarships for",
+        titleHighlight: "Every",
+        title2: "Child",
+        desc: "Ensuring access to quality education for the most vulnerable members of society through targeted bursaries and support.",
     },
 ];
 
