@@ -60,12 +60,12 @@ export default function BlogPage() {
       }}>
         <div className="absolute inset-0 bg-slate-950/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center justify-center p-3 bg-emerald-500/20 rounded-full mb-6 backdrop-blur-md border border-emerald-500/20">
-            <BookOpen className="w-6 h-6 text-emerald-400" />
+          <div className="inline-flex items-center justify-center p-3 bg-primary/20 rounded-full mb-6 backdrop-blur-md border border-primary/20">
+            <BookOpen className="w-6 h-6 text-primary" />
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-widest">Our Activities</h1>
           <nav className="flex items-center justify-center gap-2 text-sm text-slate-300">
-            <Link href="/" className="hover:text-emerald-400 transition-colors uppercase tracking-widest font-bold">Home</Link>
+            <Link href="/" className="hover:text-primary transition-colors uppercase tracking-widest font-bold">Home</Link>
             <span>/</span>
             <span className="uppercase tracking-widest font-bold text-white">Activities</span>
           </nav>
@@ -81,27 +81,27 @@ export default function BlogPage() {
             {/* Search */}
             <div className="bg-white dark:bg-slate-900 p-8 border border-slate-200 dark:border-slate-800">
               <h4 className="font-bold text-sm uppercase tracking-[0.2em] mb-6 text-slate-900 dark:text-white flex items-center">
-                <Search className="w-4 h-4 mr-3 text-emerald-600" /> Search
+                <Search className="w-4 h-4 mr-3 text-primary" /> Search
               </h4>
               <Input
                 placeholder="Keywords..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-emerald-500 rounded-none h-12"
+                className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 focus-visible:ring-primary rounded-none h-12"
               />
             </div>
 
             {/* Categories */}
             <div className="bg-white dark:bg-slate-900 p-8 border border-slate-200 dark:border-slate-800">
               <h4 className="font-bold text-sm uppercase tracking-[0.2em] mb-6 text-slate-900 dark:text-white flex items-center">
-                <Filter className="w-4 h-4 mr-3 text-emerald-600" /> Categories
+                <Filter className="w-4 h-4 mr-3 text-primary" /> Categories
               </h4>
               <div className="flex flex-col gap-1">
                 {categories.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`flex items-center justify-between py-2 text-sm font-bold transition-colors ${selectedCategory === cat ? 'text-emerald-600' : 'text-slate-500 hover:text-emerald-600'}`}
+                    className={`flex items-center justify-between py-2 text-sm font-bold transition-colors ${selectedCategory === cat ? 'text-primary' : 'text-slate-500 hover:text-primary'}`}
                   >
                     <span>{cat}</span>
                     <span className="text-[10px] bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full">
@@ -115,14 +115,14 @@ export default function BlogPage() {
             {/* Tags */}
             <div className="bg-white dark:bg-slate-900 p-8 border border-slate-200 dark:border-slate-800">
               <h4 className="font-bold text-sm uppercase tracking-[0.2em] mb-6 text-slate-900 dark:text-white flex items-center">
-                <Tag className="w-4 h-4 mr-3 text-emerald-600" /> Tags
+                <Tag className="w-4 h-4 mr-3 text-primary" /> Tags
               </h4>
               <div className="flex flex-wrap gap-2">
                 {allTags.map(tag => (
                   <button
                     key={tag}
                     onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-                    className={`text-[10px] uppercase tracking-wider font-bold px-3 py-1.5 transition-colors border ${selectedTag === tag ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-500 hover:border-emerald-500 hover:text-emerald-600'}`}
+                    className={`text-[10px] uppercase tracking-wider font-bold px-3 py-1.5 transition-colors border ${selectedTag === tag ? 'bg-primary border-primary text-white' : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-500 hover:border-primary hover:text-primary'}`}
                   >
                     {tag}
                   </button>
@@ -137,7 +137,7 @@ export default function BlogPage() {
               <div className="bg-white dark:bg-slate-900 p-12 text-center border border-slate-200 dark:border-slate-800">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 uppercase tracking-wider">No activities found</h3>
                 <p className="text-slate-500">Try adjusting your search or filters.</p>
-                <button onClick={() => { setSearchQuery(''); setSelectedCategory('All'); setSelectedTag(null); }} className="mt-6 text-emerald-600 font-bold uppercase text-xs tracking-widest hover:underline">Clear all filters</button>
+                <button onClick={() => { setSearchQuery(''); setSelectedCategory('All'); setSelectedTag(null); }} className="mt-6 text-primary font-bold uppercase text-xs tracking-widest hover:underline">Clear all filters</button>
               </div>
             ) : (
               <div className="grid md:grid-cols-2 gap-8">
@@ -145,22 +145,22 @@ export default function BlogPage() {
                   <Link href={`/blog/${update.slug}`} key={update.slug} className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col hover:-translate-y-1 transition-all duration-300">
                     <div className="relative h-64 w-full overflow-hidden">
                       <Image src={update.image} alt={update.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                      <div className="absolute top-4 left-4 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">
+                      <div className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">
                         {update.category}
                       </div>
                     </div>
                     <div className="p-8 flex-1 flex flex-col">
-                      <div className="flex items-center gap-4 text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-4">
+                      <div className="flex items-center gap-4 text-[10px] font-bold text-primary uppercase tracking-widest mb-4">
                         <span className="flex items-center gap-1.5"><Calendar className="w-3 h-3" /> {update.date}</span>
                       </div>
-                      <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors mb-4 line-clamp-2 uppercase tracking-wide leading-tight">
+                      <h4 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors mb-4 line-clamp-2 uppercase tracking-wide leading-tight">
                         {update.title}
                       </h4>
                       <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
                         {update.excerpt}
                       </p>
                       <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
-                        <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                        <span className="text-xs font-bold text-primary uppercase tracking-widest flex items-center gap-2">
                           Read Full Report <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                         </span>
                       </div>
@@ -176,7 +176,7 @@ export default function BlogPage() {
                 <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest border border-slate-200 dark:border-slate-800 disabled:opacity-30 disabled:cursor-not-allowed hover:border-emerald-500 transition-colors"
+                  className="px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest border border-slate-200 dark:border-slate-800 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary transition-colors"
                 >
                   Prev
                 </button>
@@ -185,7 +185,7 @@ export default function BlogPage() {
                     <button
                       key={i}
                       onClick={() => setCurrentPage(i + 1)}
-                      className={`w-10 h-10 flex items-center justify-center text-xs font-bold border transition-all ${currentPage === i + 1 ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-200 dark:border-slate-800 text-slate-500 hover:border-emerald-500'}`}
+                      className={`w-10 h-10 flex items-center justify-center text-xs font-bold border transition-all ${currentPage === i + 1 ? 'bg-primary border-primary text-white' : 'border-slate-200 dark:border-slate-800 text-slate-500 hover:border-primary'}`}
                     >
                       {i + 1}
                     </button>
@@ -194,7 +194,7 @@ export default function BlogPage() {
                 <button
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest border border-slate-200 dark:border-slate-800 disabled:opacity-30 disabled:cursor-not-allowed hover:border-emerald-500 transition-colors"
+                  className="px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest border border-slate-200 dark:border-slate-800 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary transition-colors"
                 >
                   Next
                 </button>

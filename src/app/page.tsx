@@ -54,10 +54,10 @@ export default function HomePage() {
               { icon: MessageCircle, label: "WhatsApp", value: "+254 700 000 000", href: "https://wa.me/254700000000" },
               { icon: MapPin, label: "Location", value: "Nairobi, Kenya", href: "/contact" },
             ].map((item, i) => (
-              <a key={i} href={item.href} className="flex flex-col items-center gap-1 py-6 text-center group hover:bg-emerald-900/30 transition-colors border-white/10">
-                <item.icon className="w-6 h-6 text-emerald-500 mb-1" />
+              <a key={i} href={item.href} className="flex flex-col items-center gap-1 py-6 text-center group hover:bg-primary/10 transition-colors border-white/10">
+                <item.icon className="w-6 h-6 text-blue-400 mb-1" />
                 <span className="text-xs text-slate-400 uppercase tracking-wider font-semibold">{item.label}</span>
-                <span className="text-white text-sm font-medium group-hover:text-emerald-400 transition-colors px-2 break-all">{item.value}</span>
+                <span className="text-white text-sm font-medium group-hover:text-blue-400 transition-colors px-2 break-all">{item.value}</span>
               </a>
             ))}
           </div>
@@ -71,11 +71,11 @@ export default function HomePage() {
             {/* Content Side */}
             <div className="space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
-                <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase flex items-center gap-2">
+                <h2 className="text-sm font-bold tracking-widest text-primary uppercase flex items-center gap-2">
                   <Award className="w-4 h-4" /> The Foundation
                 </h2>
                 <h3 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
-                  Guided by <span className="text-emerald-500">Integrity</span> and Compassion.
+                  Guided by <span className="text-primary">Integrity</span> and Compassion.
                 </h3>
                 <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed pt-2">
                   Established to serve the most vulnerable, The Cornerstone Foundation operates under a strict Declaration of Trust. We believe in evidence-driven programs implemented with trusted local partners.
@@ -89,15 +89,15 @@ export default function HomePage() {
                   "Faith-driven ethos ensuring care for the marginalized."
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <div className="bg-emerald-500/10 p-1 rounded-full mt-1">
-                      <Sparkles className="w-4 h-4 text-emerald-600" />
+                    <div className="bg-primary/10 p-1 rounded-full mt-1">
+                      <Sparkles className="w-4 h-4 text-primary" />
                     </div>
                     <span className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
               <div className="pt-4">
-                <Link href="/about" className="inline-flex items-center text-emerald-600 font-bold hover:text-emerald-500 transition-colors group uppercase text-sm tracking-widest">
+                <Link href="/about" className="inline-flex items-center text-primary font-bold hover:text-primary/80 transition-colors group uppercase text-sm tracking-widest">
                   Discover Our Mission <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -115,14 +115,14 @@ export default function HomePage() {
       <section className="w-full py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-            <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase">Core Strategic Areas</h2>
+            <h2 className="text-sm font-bold tracking-widest text-primary uppercase">Core Strategic Areas</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-widest leading-tight">Our Pillars of Intervention</h3>
             <p className="text-lg text-slate-600 dark:text-slate-400">Delivering sustainable, accountable impact through focused programs.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {PILLARS.map((pillar, i) => (
               <div key={i} className="group relative bg-white dark:bg-slate-950 p-10 border border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300">
-                <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center mb-8 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <pillar.icon className="w-8 h-8" />
                 </div>
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wide">{pillar.title}</h4>
@@ -142,7 +142,7 @@ export default function HomePage() {
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-          <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-emerald-600/90 flex items-center justify-center text-white shadow-2xl transform transition-transform duration-300 group-hover:scale-110">
+          <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-primary/90 flex items-center justify-center text-white shadow-2xl transform transition-transform duration-300 group-hover:scale-110">
             <Play className="w-8 h-8 md:w-12 md:h-12 fill-current ml-2" />
           </div>
         </div>
@@ -183,22 +183,22 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col sm:flex-row items-baseline justify-between gap-4 mb-14">
             <div>
-              <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase mb-1">Field Reports</h2>
+              <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-1">Field Reports</h2>
               <h3 className="text-3xl font-bold text-slate-900 dark:text-white uppercase tracking-widest">Recent Activities</h3>
             </div>
-            <Link href="/blog" className="text-sm font-bold text-emerald-600 hover:text-emerald-500 uppercase tracking-widest inline-flex items-center gap-2 group">
+            <Link href="/blog" className="text-sm font-bold text-primary hover:text-primary/80 uppercase tracking-widest inline-flex items-center gap-2 group">
               View All Activities <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {updates.map((update) => (
-              <Link href={`/blog/${update.slug}`} key={update.slug} className="group bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex flex-col hover:border-emerald-500 transition-colors">
+              <Link href={`/blog/${update.slug}`} key={update.slug} className="group bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex flex-col hover:border-primary transition-colors">
                 <div className="relative h-56 w-full overflow-hidden">
                   <Image src={update.image} alt={update.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <span className="absolute top-4 left-4 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">{update.date}</span>
+                  <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">{update.date}</span>
                 </div>
                 <div className="p-8 flex-1 flex flex-col">
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors mb-4 line-clamp-2 uppercase tracking-wide">{update.title}</h4>
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors mb-4 line-clamp-2 uppercase tracking-wide">{update.title}</h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3 flex-1">{update.excerpt}</p>
                 </div>
               </Link>
@@ -208,21 +208,21 @@ export default function HomePage() {
       </section>
 
       {/* 7. Testimonials */}
-      <section className="w-full py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+      < section className="w-full py-24 bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800" >
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase text-center mb-2">Voices of Impact</h2>
+          <h2 className="text-sm font-bold tracking-widest text-primary uppercase text-center mb-2">Voices of Impact</h2>
           <h3 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-16 uppercase tracking-widest">What Our Beneficiaries Say</h3>
           <div className="grid md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((t, i) => (
               <div key={i} className="bg-white dark:bg-slate-950 p-10 border border-slate-100 dark:border-slate-800 flex flex-col relative">
-                <div className="absolute -top-4 left-10 w-8 h-8 bg-emerald-600 text-white flex items-center justify-center font-serif text-3xl italic pt-2">
+                <div className="absolute -top-4 left-10 w-8 h-8 bg-primary text-white flex items-center justify-center font-serif text-3xl italic pt-2">
                   &ldquo;
                 </div>
                 <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed italic flex-1 mb-8">
                   {t.text}
                 </p>
                 <div className="flex items-center gap-4 border-t border-slate-100 dark:border-slate-800 pt-6">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 font-bold">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary font-bold">
                     {t.name[0]}
                   </div>
                   <div>
@@ -234,8 +234,8 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
-    </div>
+    </div >
   );
 }

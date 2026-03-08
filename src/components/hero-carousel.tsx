@@ -76,14 +76,14 @@ export function HeroCarousel() {
             <div className="absolute inset-0 z-[60] pointer-events-none flex items-center justify-between px-2 sm:px-4">
                 <button
                     onClick={prev}
-                    className="w-10 h-10 sm:w-12 sm:h-12 bg-black/40 hover:bg-emerald-600 text-white flex items-center justify-center transition-all border border-white/10 pointer-events-auto shadow-lg"
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-black/40 hover:bg-primary text-white flex items-center justify-center transition-all border border-white/10 pointer-events-auto shadow-lg"
                     aria-label="Previous slide"
                 >
                     <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
                 </button>
                 <button
                     onClick={next}
-                    className="w-10 h-10 sm:w-12 sm:h-12 bg-black/40 hover:bg-emerald-600 text-white flex items-center justify-center transition-all border border-white/10 pointer-events-auto shadow-lg"
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-black/40 hover:bg-primary text-white flex items-center justify-center transition-all border border-white/10 pointer-events-auto shadow-lg"
                     aria-label="Next slide"
                 >
                     <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -105,7 +105,7 @@ export function HeroCarousel() {
                             <button
                                 key={i}
                                 onClick={(e) => goToSlide(i, e)}
-                                className={`h-1 sm:h-1.5 rounded-full transition-all duration-500 cursor-pointer ${i === current ? "w-6 sm:w-10 bg-emerald-500" : "w-1.5 sm:w-3 bg-white/30 hover:bg-white"
+                                className={`h-1 sm:h-1.5 rounded-full transition-all duration-500 cursor-pointer ${i === current ? "w-6 sm:w-10 bg-primary" : "w-1.5 sm:w-3 bg-white/30 hover:bg-white"
                                     }`}
                                 aria-label={`Slide ${i + 1}`}
                             />
@@ -115,7 +115,7 @@ export function HeroCarousel() {
                     {/* Discover More Button - Optimized for touch and mobile readability */}
                     <Link
                         href="/about"
-                        className="shrink-0 text-[10px] sm:text-xs font-bold text-white border border-white/40 hover:bg-emerald-600 hover:border-emerald-600 px-4 sm:px-6 py-2 sm:py-2.5 transition-all uppercase tracking-[0.15em] sm:tracking-[0.2em] bg-white/5 sm:bg-transparent text-center whitespace-nowrap hidden sm:block"
+                        className="shrink-0 text-[10px] sm:text-xs font-bold text-white border border-white/40 hover:bg-primary hover:border-primary px-4 sm:px-6 py-2 sm:py-2.5 transition-all uppercase tracking-[0.15em] sm:tracking-[0.2em] bg-white/5 sm:bg-transparent text-center whitespace-nowrap hidden sm:block"
                     >
                         Discover More
                     </Link>

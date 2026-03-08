@@ -32,14 +32,14 @@ export default function GalleryPage() {
     return (
         <div className="w-full bg-slate-950 min-h-screen">
             {/* Header */}
-            <section className="relative pt-32 pb-16 flex items-center justify-center bg-emerald-950 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-emerald-950 to-slate-950" />
+            <section className="relative pt-32 pb-16 flex items-center justify-center bg-slate-900 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-slate-950 to-slate-950" />
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-4">
-                    <h2 className="text-sm font-bold tracking-widest text-emerald-400 uppercase">Our Work in Pictures</h2>
+                    <h2 className="text-sm font-bold tracking-widest text-blue-400 uppercase">Our Work in Pictures</h2>
                     <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white">
-                        Photo <span className="text-emerald-400">Gallery</span>
+                        Photo <span className="text-blue-400">Gallery</span>
                     </h1>
-                    <p className="text-lg text-emerald-100/70 font-light">
+                    <p className="text-lg text-blue-200/70 font-light">
                         A visual record of our projects and programmes across Kenya.
                     </p>
                 </div>
@@ -87,7 +87,7 @@ export default function GalleryPage() {
                             />
                             {/* Hover overlay — caption only on hover */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                                <span className="text-xs font-bold tracking-widest text-emerald-400 uppercase mb-1">{item.category}</span>
+                                <span className="text-xs font-bold tracking-widest text-blue-400 uppercase mb-1">{item.category}</span>
                                 <p className="text-white font-semibold text-sm md:text-base leading-snug">{item.caption}</p>
                             </div>
                         </div>
@@ -120,7 +120,7 @@ export default function GalleryPage() {
                         {/* Caption */}
                         <div className="w-full px-2 py-3 flex items-center justify-between">
                             <div>
-                                <span className="text-xs font-bold tracking-widest text-emerald-400 uppercase">{current.category}</span>
+                                <span className="text-xs font-bold tracking-widest text-blue-400 uppercase">{current.category}</span>
                                 <p className="text-white font-semibold text-sm mt-0.5">{current.caption}</p>
                             </div>
                             <span className="text-slate-400 text-sm">{lightbox + 1} / {gallery.length}</span>

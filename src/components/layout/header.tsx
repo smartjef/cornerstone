@@ -26,14 +26,14 @@ export function Header() {
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110">
               <Image
-                src="/logo.png"
+                src="/icon.png"
                 alt="Cornerstone Foundation Logo"
                 fill
                 className="object-contain"
                 priority
               />
             </div>
-            <span className="font-bold tracking-tight text-emerald-600 dark:text-emerald-500 text-xl md:text-2xl">
+            <span className="font-bold tracking-tight text-primary text-xl md:text-2xl">
               Cornerstone
             </span>
           </Link>
@@ -45,7 +45,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-bold transition-colors ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400"}`}
+                  className={`font-bold transition-colors ${isActive ? "text-primary dark:text-primary" : "text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary"}`}
                 >
                   {item.label}
                 </Link>
@@ -58,7 +58,7 @@ export function Header() {
               <ThemeToggle />
             </div>
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="hidden md:inline-flex">
-              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-4 md:px-6 font-bold tracking-wide">
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-full px-4 md:px-6 font-bold tracking-wide">
                 Contact Us
               </Button>
             </Link>
@@ -84,7 +84,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl font-bold transition-colors ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-slate-900 dark:text-white"}`}
+                  className={`text-2xl font-bold transition-colors ${isActive ? "text-primary dark:text-primary" : "text-slate-900 dark:text-white"}`}
                 >
                   {item.label}
                 </Link>
