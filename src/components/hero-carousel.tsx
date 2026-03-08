@@ -50,7 +50,7 @@ export function HeroCarousel() {
                         priority={index === 0}
                         className={`absolute inset-0 w-full h-full object-cover object-top transition-transform duration-[10000ms] ease-out ${index === current ? "scale-105" : "scale-100"}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/90 via-emerald-900/60 to-emerald-900/20" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-slate-900/20" />
                 </div>
             ))}
 
@@ -58,12 +58,12 @@ export function HeroCarousel() {
                 <div className="space-y-8 py-20 min-h-[400px] flex flex-col justify-center">
 
                     <div className="transition-all duration-700 transform translate-y-0 opacity-100">
-                        <Badge className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full px-4 py-1.5 backdrop-blur-md font-medium tracking-wide mb-6 inline-flex ">
+                        <Badge className="bg-primary/20 text-blue-400 border border-primary/30 rounded-full px-4 py-1.5 backdrop-blur-md font-medium tracking-wide mb-6 inline-flex ">
                             {SLIDES[current].badge}
                         </Badge>
                         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6 min-h-[140px] md:min-h-[160px]">
                             {SLIDES[current].title1} <br className="hidden md:block" />
-                            <span className="text-emerald-400">{SLIDES[current].titleHighlight}</span> {SLIDES[current].title2}
+                            <span className="text-blue-400">{SLIDES[current].titleHighlight}</span> {SLIDES[current].title2}
                         </h1>
                         <p className="text-lg md:text-xl text-slate-200 max-w-lg leading-relaxed font-light min-h-[80px]">
                             {SLIDES[current].desc}
@@ -84,7 +84,7 @@ export function HeroCarousel() {
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
-                                className={`h-2 rounded-full transition-all duration-500 ${i === current ? "w-10 bg-emerald-400" : "w-3 bg-white/40 hover:bg-white/80"}`}
+                                className={`h-2 rounded-full transition-all duration-500 ${i === current ? "w-10 bg-blue-400" : "w-3 bg-white/40 hover:bg-white/80"}`}
                                 aria-label={`Go to slide ${i + 1}`}
                             />
                         ))}

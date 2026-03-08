@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,10 +23,14 @@ export function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-white/20 dark:border-slate-800 transition-all duration-300">
         <div className="container flex h-20 items-center justify-between gap-4">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-bold tracking-tight text-emerald-600 dark:text-emerald-500 text-2xl flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
-            </div>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-bold font-heading tracking-tight text-primary dark:text-blue-300 text-2xl flex items-center gap-3">
+            <Image
+              src="/icon.png"
+              alt="Cornerstone Foundation Logo"
+              width={32}
+              height={32}
+              className="rounded-lg"
+            />
             Cornerstone
           </Link>
 
@@ -36,7 +41,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-bold transition-colors ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400"}`}
+                  className={`font-bold transition-colors ${isActive ? "text-primary dark:text-blue-400" : "text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-blue-400"}`}
                 >
                   {item.label}
                 </Link>
@@ -49,7 +54,7 @@ export function Header() {
               <ThemeToggle />
             </div>
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="hidden md:inline-flex">
-              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-4 md:px-6 font-bold tracking-wide">
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-full px-4 md:px-6 font-bold tracking-wide">
                 Contact Us
               </Button>
             </Link>
@@ -75,7 +80,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl font-bold transition-colors ${isActive ? "text-emerald-600 dark:text-emerald-400" : "text-slate-900 dark:text-white"}`}
+                  className={`text-2xl font-bold transition-colors ${isActive ? "text-primary dark:text-blue-400" : "text-slate-900 dark:text-white"}`}
                 >
                   {item.label}
                 </Link>

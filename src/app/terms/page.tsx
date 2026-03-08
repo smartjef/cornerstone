@@ -10,7 +10,7 @@ export default function TermsPage() {
         <div className="w-full bg-white dark:bg-slate-950 min-h-screen pt-32 pb-24">
             <div className="max-w-3xl mx-auto px-6">
                 <div className="mb-12">
-                    <h2 className="text-sm font-bold tracking-widest text-emerald-600 uppercase mb-3">Legal</h2>
+                    <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3">Legal</h2>
                     <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Terms &amp; Conditions</h1>
                     <p className="text-slate-500 dark:text-slate-400 text-sm">Last updated: March 2026</p>
                 </div>
@@ -60,7 +60,7 @@ export default function TermsPage() {
 
                     <section>
                         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-3">8. Contact</h2>
-                        <p>If you have any questions about these Terms, please contact us at <a href="mailto:info@cornerstone.or.ke" className="text-emerald-600 hover:underline">info@cornerstone.or.ke</a>.</p>
+                        <p>If you have any questions about these Terms, please contact us at <a href="mailto:info@cornerstone.or.ke" className="text-primary hover:underline">info@cornerstone.or.ke</a>.</p>
                     </section>
 
                 </div>
