@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MessageCircle, MapPin, ArrowRight, GraduationCap, Droplets, Award, Sparkles, Play, Heart, BookOpen } from "lucide-react";
-import { updates } from "@/lib/content";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { HomeImageSlider } from "@/components/home-image-slider";
 
