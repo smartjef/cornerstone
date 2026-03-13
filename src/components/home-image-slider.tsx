@@ -21,10 +21,17 @@ export function HomeImageSlider() {
                     key={i}
                     className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? "opacity-100" : "opacity-0"}`}
                 >
-                    <Image src={src} alt="Cornerstone Foundation" fill className="object-cover" />
+                    <Image 
+                        src={src} 
+                        alt="Cornerstone Foundation" 
+                        fill 
+                        className="object-cover" 
+                        unoptimized={src.includes('mauzoplus.app')}
+                    />
                 </div>
             ))}
             {/* Dot indicators */}
+
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {IMAGES.map((_, i) => (
                     <button

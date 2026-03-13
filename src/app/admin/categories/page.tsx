@@ -1,0 +1,203 @@
+'use client'
+
+import { useState, useEffect, FormEvent } from 'react'
+import AdminShell from '@/components/admin/admin-shell'
+import { toast } from 'sonner'
+import { Plus, Pencil, Trash2, Tag, Check, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Skeleton } from '@/components/ui/skeleton'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog'
+import { Badge } from '@/components/ui/badge'
+
+interface Category {
+  id: string
+  name: string
+  slug: string
+  createdAt: string
+  _count?: { blogs: number }
+}
+
+export default function CategoriesPage() {
+  const [categories, setCategories] = useState<Category[]>([])
+  const [loading, setLoading] = useState(true)
+  const [newName, setNewName] = useState('')
+  const [adding, setAdding] = useState(false)
+  const [editId, setEditId] = useState<string | null>(null)
+  const [editName, setEditName] = useState('')
+  const [deleteTarget, setDeleteTarget] = useState<Category | null>(null)
+  const [deleting, setDeleting] = useState(false)
+
+  async function load() {
+    try {
+      const res = await fetch('/api/admin/categories')
+      if (!res.ok) { setLoading(false); return }
+      const data = await res.json()
+      setCategories(Array.isArray(data) ? data : [])
+    } catch { /* ignore */ } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => { load() }, [])
+
+  async function handleAdd(e: FormEvent) {
+    e.preventDefault()
+    if (!newName.trim()) return
+    setAdding(true)
+    const res = await fetch('/api/admin/categories', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: newName.trim() }),
+    })
+    setAdding(false)
+    if (res.ok) {
+      const cat = await res.json()
+      setCategories(prev => [...prev, cat].sort((a, b) => a.name.localeCompare(b.name)))
+      setNewName('')
+      toast.success(`Category "${cat.name}" created.`)
+    } else {
+      const d = await res.json()
+      toast.error(d.error || 'Failed to create category.')
+    }
+  }
+
+  async function handleEdit(id: string) {
+    if (!editName.trim()) return
+    const res = await fetch(`/api/admin/categories/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: editName.trim() }),
+    })
+    if (res.ok) {
+      const updated = await res.json()
+      setCategories(prev => prev.map(c => c.id === id ? updated : c).sort((a, b) => a.name.localeCompare(b.name)))
+      toast.success('Category updated.')
+    } else {
+      toast.error('Failed to update category.')
+    }
+    setEditId(null)
+  }
+
+  async function confirmDelete() {
+    if (!deleteTarget) return
+    setDeleting(true)
+    const res = await fetch(`/api/admin/categories/${deleteTarget.id}`, { method: 'DELETE' })
+    setDeleting(false)
+    if (res.ok) {
+      setCategories(prev => prev.filter(c => c.id !== deleteTarget.id))
+      toast.success(`Category "${deleteTarget.name}" deleted.`)
+    } else {
+      toast.error('Failed to delete — it may be in use.')
+    }
+    setDeleteTarget(null)
+  }
+
+  return (
+    <AdminShell>
+      <div className="max-w-2xl mx-auto space-y-6">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Categories</h1>
+          <p className="text-sm text-slate-500 mt-1">Organise blog posts into categories.</p>
+        </div>
+
+        {/* Add form */}
+        <div className="bg-white border border-slate-200 rounded-xl p-5">
+          <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 block">New Category</Label>
+          <form onSubmit={handleAdd} className="flex gap-3">
+            <Input
+              value={newName}
+              onChange={e => setNewName(e.target.value)}
+              placeholder="e.g. Education, Community, Health…"
+              className="flex-1"
+            />
+            <Button type="submit" disabled={adding || !newName.trim()} className="gap-2 shrink-0">
+              <Plus className="w-4 h-4" />
+              {adding ? 'Adding…' : 'Add'}
+            </Button>
+          </form>
+        </div>
+
+        {/* List */}
+        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+          {loading ? (
+            <div className="p-4 space-y-3">
+              {Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}
+            </div>
+          ) : categories.length === 0 ? (
+            <div className="p-12 text-center">
+              <Tag className="w-10 h-10 text-slate-200 mx-auto mb-3" />
+              <p className="font-medium text-slate-500">No categories yet</p>
+            </div>
+          ) : (
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-100 bg-slate-50">
+                  <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Name</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider hidden sm:table-cell">Slug</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {categories.map(cat => (
+                  <tr key={cat.id} className="hover:bg-slate-50 transition-colors">
+                    <td className="px-5 py-3">
+                      {editId === cat.id ? (
+                        <div className="flex items-center gap-2">
+                          <Input
+                            value={editName}
+                            onChange={e => setEditName(e.target.value)}
+                            className="h-8 text-sm"
+                            autoFocus
+                            onKeyDown={e => { if (e.key === 'Enter') handleEdit(cat.id); if (e.key === 'Escape') setEditId(null) }}
+                          />
+                          <button onClick={() => handleEdit(cat.id)} className="p-1 text-emerald-500 hover:text-emerald-700"><Check className="w-4 h-4" /></button>
+                          <button onClick={() => setEditId(null)} className="p-1 text-slate-400 hover:text-slate-700"><X className="w-4 h-4" /></button>
+                        </div>
+                      ) : (
+                        <span className="font-medium text-slate-900">{cat.name}</span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 hidden sm:table-cell">
+                      <Badge variant="outline" className="font-mono text-[10px]">{cat.slug}</Badge>
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-1">
+                        <button onClick={() => { setEditId(cat.id); setEditName(cat.name) }}
+                          className="p-1.5 rounded text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors">
+                          <Pencil className="w-3.5 h-3.5" />
+                        </button>
+                        <button onClick={() => setDeleteTarget(cat)}
+                          className="p-1.5 rounded text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors">
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+
+      <Dialog open={!!deleteTarget} onOpenChange={() => setDeleteTarget(null)}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Delete Category</DialogTitle>
+            <DialogDescription>
+              Delete &ldquo;<span className="font-semibold">{deleteTarget?.name}</span>&rdquo;? Posts using this category will be uncategorised.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeleteTarget(null)}>Cancel</Button>
+            <Button variant="destructive" onClick={confirmDelete} disabled={deleting}>
+              {deleting ? 'Deleting…' : 'Delete'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </AdminShell>
+  )
+}

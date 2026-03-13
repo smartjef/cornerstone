@@ -31,7 +31,9 @@ export function Header() {
                 fill
                 className="object-contain"
                 priority
+                unoptimized={true}
               />
+
             </div>
             <span className="font-bold tracking-tight text-primary text-xl md:text-2xl">
               Cornerstone

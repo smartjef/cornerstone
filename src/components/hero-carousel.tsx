@@ -2,19 +2,19 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { gallery } from "@/lib/content";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-/**
- * Hero Carousel slides using only original Cornerstone Foundation content.
- */
-const SLIDES = gallery.slice(0, 4).map(item => ({
-    image: item.src,
-    label: item.caption
-}));
+interface Slide {
+  image: string
+  label: string
+}
 
-export function HeroCarousel() {
+interface Props {
+  slides: Slide[]
+}
+
+export function HeroCarousel({ slides: SLIDES }: Props) {
     const [current, setCurrent] = useState(0);
 
     // Standard navigation functions
@@ -23,16 +23,20 @@ export function HeroCarousel() {
             e.preventDefault();
             e.stopPropagation();
         }
-        setCurrent((prev) => (prev + 1) % SLIDES.length);
-    }, []);
+        if (SLIDES && SLIDES.length > 0) {
+            setCurrent((prev) => (prev + 1) % SLIDES.length);
+        }
+    }, [SLIDES]);
 
     const prev = useCallback((e?: React.MouseEvent) => {
         if (e) {
             e.preventDefault();
             e.stopPropagation();
         }
-        setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
-    }, []);
+        if (SLIDES && SLIDES.length > 0) {
+            setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+        }
+    }, [SLIDES]);
 
     const goToSlide = useCallback((index: number, e?: React.MouseEvent) => {
         if (e) {
@@ -44,14 +48,18 @@ export function HeroCarousel() {
 
     // Effect for automatic scrolling every 6 seconds
     useEffect(() => {
+        if (!SLIDES || SLIDES.length === 0) return;
         const interval = setInterval(() => {
             setCurrent((prev) => (prev + 1) % SLIDES.length);
         }, 6000);
         return () => clearInterval(interval);
-    }, []);
+    }, [SLIDES]);
+
+    if (!SLIDES || SLIDES.length === 0) return null;
 
     return (
         <section className="relative w-full overflow-hidden bg-slate-900" style={{ height: "80vh", minHeight: 400 }}>
+
             {/* Slides container - z-10 for background layer */}
             <div className="absolute inset-0 z-10 pointer-events-none">
                 {SLIDES.map((slide, i) => (
@@ -66,7 +74,9 @@ export function HeroCarousel() {
                             fill
                             priority={i === 0}
                             className="object-cover object-center"
+                            unoptimized={slide.image.includes('mauzoplus.app') || slide.image.startsWith('http')}
                         />
+
                         <div className="absolute inset-0 bg-black/30 md:bg-black/20" />
                     </div>
                 ))}
@@ -94,7 +104,7 @@ export function HeroCarousel() {
             <div className="absolute bottom-0 left-0 right-0 z-[70] bg-black/80 md:bg-black/60 backdrop-blur-md px-4 sm:px-8 py-4 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pointer-events-auto">
                 {/* Current Slide Label - Centered on mobile, Left-aligned on desktop */}
                 <p className="text-white text-[10px] sm:text-sm font-bold tracking-[0.2em] uppercase text-center sm:text-left leading-relaxed max-w-[280px] sm:max-w-none">
-                    {SLIDES[current].label}
+                    {SLIDES[current]?.label}
                 </p>
 
                 {/* Indicators and CTA Group - Stretches on mobile */}
@@ -124,3 +134,4 @@ export function HeroCarousel() {
         </section>
     );
 }
+

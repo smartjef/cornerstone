@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,9 +7,10 @@ export function Footer() {
       <div className="container grid gap-10 md:grid-cols-4">
         <div>
           <Link href="/" className="font-bold tracking-tight text-primary text-2xl flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shrink-0">
-              <span className="text-white font-bold text-lg">C</span>
+            <div className="relative w-8 h-8 shrink-0">
+              <Image src="/logo.png" alt="Cornerstone Foundation" fill className="object-contain" unoptimized={true} />
             </div>
+
             Cornerstone
           </Link>
           <p className="mt-3 text-sm text-muted-foreground">
