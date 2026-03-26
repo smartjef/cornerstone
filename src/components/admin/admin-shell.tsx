@@ -27,6 +27,7 @@ interface SessionUser {
   email: string
   name: string | null
   role: string
+  avatar?: string | null
 }
 
 const navGroups = [
@@ -68,11 +69,18 @@ export default function AdminShell({ children, title }: { children: React.ReactN
   const [user, setUser] = useState<SessionUser | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  useEffect(() => {
+  const fetchUser = () => {
     fetch('/api/auth/me')
       .then(r => r.json())
       .then(d => { if (d.user) setUser(d.user) })
       .catch(() => {})
+  }
+
+  useEffect(() => {
+    fetchUser()
+    
+    window.addEventListener('profile-updated', fetchUser)
+    return () => window.removeEventListener('profile-updated', fetchUser)
   }, [])
 
   async function logout() {
@@ -136,10 +144,22 @@ export default function AdminShell({ children, title }: { children: React.ReactN
             onClick={() => setSidebarOpen(false)}
             className="flex items-center gap-3 px-1 rounded-none hover:bg-slate-700/40 transition-colors p-1"
           >
-            <div className="w-8 h-8 rounded-none bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
-              <span className="text-primary text-xs font-bold uppercase">
-                {(user.name || user.email).charAt(0)}
-              </span>
+            <div className="w-8 h-8 rounded-none border border-slate-700 overflow-hidden bg-slate-800 shrink-0 relative">
+              {user.avatar ? (
+                <Image 
+                  src={user.avatar} 
+                  alt={user.name || 'User'} 
+                  fill 
+                  className="object-cover"
+                  unoptimized={true}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-primary text-xs font-bold uppercase">
+                    {(user.name || user.email).charAt(0)}
+                  </span>
+                </div>
+              )}
             </div>
             <div className="min-w-0">
               <p className="text-white text-sm font-medium truncate">{user.name || user.email}</p>

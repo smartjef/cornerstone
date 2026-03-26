@@ -10,6 +10,7 @@ export interface SessionUser {
   email: string
   name: string | null
   role: string
+  avatar?: string | null
 }
 
 export async function signToken(payload: SessionUser): Promise<string> {

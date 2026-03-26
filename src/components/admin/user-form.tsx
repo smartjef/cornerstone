@@ -116,7 +116,7 @@ export default function UserForm({ initial, onSuccess, onCancel }: UserFormProps
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Column: Core Info */}
         <div className="space-y-4">
-          <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
+          <div className="bg-white p-5 rounded-none border border-slate-200 space-y-4">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
               <UserIcon className="w-3.5 h-3.5" /> Core Account
             </h3>
@@ -175,7 +175,7 @@ export default function UserForm({ initial, onSuccess, onCancel }: UserFormProps
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
+          <div className="bg-white p-5 rounded-none border border-slate-200 space-y-4">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
               <Briefcase className="w-3.5 h-3.5" /> Team Settings
             </h3>
@@ -215,7 +215,7 @@ export default function UserForm({ initial, onSuccess, onCancel }: UserFormProps
                     placeholder="https://linkedin.com/in/..."
                   />
                 </div>
-                <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-100">
+                <div className="flex items-center justify-between p-3 bg-slate-50 rounded-none border border-slate-100">
                   <div className="space-y-0.5">
                     <p className="text-sm font-medium">Public Visibility</p>
                     <p className="text-xs text-slate-500">Show on the public team page</p>
@@ -223,11 +223,11 @@ export default function UserForm({ initial, onSuccess, onCancel }: UserFormProps
                   <button
                     type="button"
                     onClick={() => setIsPublic(!isPublic)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                    className={`relative inline-flex h-6 w-11 items-center rounded-none transition-colors ${
                       isPublic ? 'bg-primary' : 'bg-slate-200'
                     }`}
                   >
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                    <span className={`inline-block h-4 w-4 transform rounded-none bg-white transition-transform ${
                       isPublic ? 'translate-x-6' : 'translate-x-1'
                     }`} />
                   </button>
@@ -249,11 +249,11 @@ export default function UserForm({ initial, onSuccess, onCancel }: UserFormProps
 
         {/* Right Column: Media & Bio */}
         <div className="space-y-4">
-          <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4 text-center">
+          <div className="bg-white p-5 rounded-none border border-slate-200 space-y-4 text-center">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest text-left">Profile Image</h3>
             
             <div className="relative inline-block group">
-              <div className="w-32 h-32 rounded-full border-4 border-slate-50 overflow-hidden bg-slate-100 mx-auto shadow-inner relative">
+              <div className="w-32 h-32 rounded-none border-4 border-slate-50 overflow-hidden bg-slate-100 mx-auto shadow-inner relative">
                 {avatar ? (
                   <Image 
                     src={avatar} 
@@ -273,7 +273,7 @@ export default function UserForm({ initial, onSuccess, onCancel }: UserFormProps
                 type="button"
                 variant="secondary"
                 size="sm"
-                className="absolute bottom-0 right-0 rounded-full shadow-lg border-2 border-white hover:scale-105 transition-transform w-8 h-8 p-0"
+                className="absolute bottom-0 right-0 rounded-none shadow-lg border-2 border-white hover:scale-105 transition-transform w-8 h-8 p-0"
                 onClick={() => setMediaOpen(true)}
               >
                 <ImagePlus className="w-4 h-4" />
@@ -300,7 +300,7 @@ export default function UserForm({ initial, onSuccess, onCancel }: UserFormProps
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-xl border border-slate-200 space-y-4">
+          <div className="bg-white p-5 rounded-none border border-slate-200 space-y-4">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
               <Info className="w-3.5 h-3.5" /> Biography
             </h3>

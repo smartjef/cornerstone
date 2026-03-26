@@ -8,13 +8,7 @@ import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog'
+import Link from 'next/link'
 
 import {
   DropdownMenu,
@@ -24,7 +18,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import UserForm from '@/components/admin/user-form'
 import { toast } from 'sonner'
 
 interface User {
@@ -50,10 +43,6 @@ export default function UsersPage() {
   const [error, setError] = useState<string | null>(null)
   const [search, setSearch] = useState('')
   const [currentUserId, setCurrentUserId] = useState<string | null>(null)
-  
-  // Modal state
-  const [formOpen, setFormOpen] = useState(false)
-  const [editingUser, setEditingUser] = useState<User | undefined>(undefined)
 
   const fetchUsers = async () => {
     setLoading(true)
@@ -141,7 +130,7 @@ export default function UsersPage() {
                 <tr key={user.id} className="hover:bg-slate-50/50 transition-colors group">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 overflow-hidden flex-shrink-0">
+                      <div className="w-10 h-10 rounded-none bg-slate-100 border border-slate-200 overflow-hidden flex-shrink-0 relative">
                         {user.avatar ? (
                           <Image 
                             src={user.avatar} 
@@ -189,11 +178,10 @@ export default function UsersPage() {
                       <DropdownMenuContent align="end" className="w-40">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={() => {
-                          setEditingUser(user)
-                          setFormOpen(true)
-                        }}>
-                          <Pencil className="mr-2 h-4 w-4" /> Edit
+                        <DropdownMenuItem asChild>
+                          <Link href={`/admin/users/${user.id}`} className="flex items-center">
+                            <Pencil className="mr-2 h-4 w-4" /> Edit
+                          </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem 
                           className="text-red-600 focus:text-red-700 focus:bg-red-50"
@@ -215,22 +203,18 @@ export default function UsersPage() {
   )
 
   return (
-    <AdminShell>
+    <AdminShell title="User Management">
       <div className="max-w-6xl mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">User Management</h1>
             <p className="text-slate-500 text-sm mt-1">Manage administrators and team members in one place.</p>
           </div>
-          <Button 
-            onClick={() => {
-              setEditingUser(undefined)
-              setFormOpen(true)
-            }}
-            className="bg-primary hover:bg-primary/90 shadow-sm gap-2"
-          >
-            <Plus className="w-4 h-4" /> Add New User
-          </Button>
+          <Link href="/admin/users/new">
+            <Button className="bg-primary hover:bg-primary/90 shadow-sm gap-2">
+              <Plus className="w-4 h-4" /> Add New User
+            </Button>
+          </Link>
         </div>
 
         <div className="flex items-center gap-4 py-2">
@@ -302,36 +286,6 @@ export default function UsersPage() {
           </Tabs>
         )}
       </div>
-
-      <Dialog open={formOpen} onOpenChange={setFormOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0 gap-0 border-none shadow-2xl">
-          <div className="p-6 border-b bg-slate-50/50">
-            <DialogHeader>
-              <DialogTitle className="text-xl font-bold tracking-tight">
-                {editingUser ? 'Edit Profile' : 'Add New User'}
-              </DialogTitle>
-              <DialogDescription className="sr-only">
-                Use the form below to {editingUser ? 'update user information' : 'create a new user account'}.
-              </DialogDescription>
-            </DialogHeader>
-
-          </div>
-          <div className="p-6 overflow-y-auto">
-            <UserForm 
-              initial={editingUser ? {
-                ...editingUser,
-                role: editingUser.role as 'ADMIN' | 'EDITOR',
-                teamType: editingUser.teamType as 'BOARD' | 'MANAGEMENT' | null,
-              } : undefined} 
-              onSuccess={() => {
-                setFormOpen(false)
-                fetchUsers()
-              }}
-              onCancel={() => setFormOpen(false)}
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
     </AdminShell>
   )
 }

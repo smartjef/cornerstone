@@ -10,11 +10,19 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import MediaLibraryModal from '@/components/admin/media-library-modal'
 import Image from 'next/image'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 
 export default function ProfilePage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [mediaOpen, setMediaOpen] = useState(false)
+  const [twoFaModalOpen, setTwoFaModalOpen] = useState(false)
 
   // Profile state
   const [profile, setProfile] = useState({
@@ -62,6 +70,7 @@ export default function ProfilePage() {
       })
       if (!res.ok) throw new Error('Update failed')
       toast.success('Profile updated successfully')
+      window.dispatchEvent(new Event('profile-updated'))
     } catch {
       toast.error('Failed to update profile')
     } finally {
@@ -90,8 +99,27 @@ export default function ProfilePage() {
       setCurrentPassword('')
       setNewPassword('')
       setConfirmPassword('')
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : 'Failed to change password')
+    } catch (_err) {
+      toast.error(_err instanceof Error ? _err.message : 'Failed to change password')
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  async function handleStart2faSetup() {
+    setTwoFaModalOpen(true)
+  }
+
+  async function handleDisable2fa() {
+    if (!confirm('Are you sure you want to disable two-factor authentication?')) return
+    setSaving(true)
+    try {
+      const res = await fetch('/api/admin/profile/2fa/disable', { method: 'POST' })
+      if (!res.ok) throw new Error('Disable failed')
+      setProfile(p => ({ ...p, twoFaEnabled: false }))
+      toast.success('Two-factor authentication disabled')
+    } catch {
+      toast.error('Failed to disable 2FA')
     } finally {
       setSaving(false)
     }
@@ -127,7 +155,7 @@ export default function ProfilePage() {
               <div className="p-6 space-y-6">
                 <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
                   <div className="relative group">
-                    <div className="w-24 h-24 rounded-full border-4 border-slate-50 bg-slate-100 overflow-hidden shadow-inner relative">
+                    <div className="w-24 h-24 rounded-none border-4 border-slate-50 bg-slate-100 overflow-hidden shadow-inner relative">
                       {profile.avatar ? (
                         <Image 
                           src={profile.avatar} 
@@ -145,7 +173,7 @@ export default function ProfilePage() {
                     <button
                       type="button"
                       onClick={() => setMediaOpen(true)}
-                      className="absolute bottom-0 right-0 p-1.5 bg-primary text-white rounded-full border-2 border-white shadow-lg hover:scale-105 transition-transform"
+                      className="absolute bottom-0 right-0 p-1.5 bg-primary text-white rounded-none border-2 border-white shadow-lg hover:scale-105 transition-transform"
                     >
                       <Camera className="w-3.5 h-3.5" />
                     </button>
@@ -267,16 +295,30 @@ export default function ProfilePage() {
               </p>
               <div className="flex items-center justify-between p-3 rounded-none bg-slate-50 border border-slate-100">
                 <span className="text-sm font-medium">Status</span>
-                <span className={`text-xs font-bold px-2 py-1 rounded-full ${profile.twoFaEnabled ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-600'}`}>
+                <span className={`text-xs font-bold px-2 py-1 rounded-none ${profile.twoFaEnabled ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-600'}`}>
                   {profile.twoFaEnabled ? 'Enabled' : 'Disabled'}
                 </span>
               </div>
-              <Button variant="outline" className="w-full text-xs" disabled>
-                Configure 2FA
-              </Button>
-              <p className="text-[10px] text-slate-400 text-center italic">
-                Coming soon to your dashboard.
-              </p>
+              
+              {!profile.twoFaEnabled ? (
+                <Button 
+                  onClick={handleStart2faSetup} 
+                  variant="outline" 
+                  className="w-full text-xs"
+                  disabled={saving}
+                >
+                  Configure 2FA
+                </Button>
+              ) : (
+                <Button 
+                  onClick={handleDisable2fa} 
+                  variant="outline" 
+                  className="w-full text-xs text-red-500 hover:text-red-600 hover:bg-red-50"
+                  disabled={saving}
+                >
+                  Disable 2FA
+                </Button>
+              )}
             </div>
 
             <div className="bg-blue-50 rounded-none border border-blue-100 p-6 space-y-3 font-medium text-blue-800">
@@ -290,6 +332,16 @@ export default function ProfilePage() {
           </div>
         </div>
 
+        {/* 2FA Setup Modal */}
+        <TwoFaSetupModal 
+          open={twoFaModalOpen}
+          onOpenChange={setTwoFaModalOpen}
+          onSuccess={() => {
+            setProfile(p => ({ ...p, twoFaEnabled: true }))
+            setTwoFaModalOpen(false)
+          }}
+        />
+
         <MediaLibraryModal 
           open={mediaOpen} 
           onOpenChange={setMediaOpen} 
@@ -297,5 +349,136 @@ export default function ProfilePage() {
         />
       </div>
     </AdminShell>
+  )
+}
+
+function TwoFaSetupModal({ open, onOpenChange, onSuccess }: { open: boolean, onOpenChange: (open: boolean) => void, onSuccess: () => void }) {
+  const [step, setStep] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const [qrCode, setQrCode] = useState('')
+  const [secret, setSecret] = useState('')
+  const [token, setToken] = useState('')
+
+  useEffect(() => {
+    if (open) {
+      setStep(1)
+      setToken('')
+      handleGenerate()
+    }
+  }, [open])
+
+  async function handleGenerate() {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/admin/profile/2fa/generate', { method: 'POST' })
+      const data = await res.json()
+      if (res.ok) {
+        setQrCode(data.qrCodeUrl)
+        setSecret(data.secret)
+      } else {
+        toast.error(data.error || 'Failed to generate 2FA secret')
+      }
+    } catch {
+      toast.error('Failed to generate 2FA secret')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function handleVerify() {
+    if (!token || token.length !== 6) {
+      toast.error('Please enter a valid 6-digit code')
+      return
+    }
+
+    setLoading(true)
+    try {
+      const res = await fetch('/api/admin/profile/2fa/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, secret })
+      })
+      const data = await res.json()
+      if (res.ok) {
+        toast.success('Two-factor authentication enabled!')
+        onSuccess()
+      } else {
+        toast.error(data.error || 'Invalid code')
+      }
+    } catch {
+      toast.error('Failed to verify code')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-md rounded-none">
+        <DialogHeader>
+          <DialogTitle>Setup Two-Factor Auth</DialogTitle>
+          <DialogDescription>
+            Follow the steps below to secure your account.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="py-4 space-y-6">
+          {step === 1 ? (
+            <div className="space-y-4 text-center">
+              <div className="bg-slate-50 p-4 border border-slate-100 rounded-none inline-block mx-auto">
+                {qrCode ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={qrCode} alt="QR Code" className="w-48 h-48 mx-auto" />
+                ) : (
+                  <div className="w-48 h-48 flex items-center justify-center text-slate-300">
+                    Loading...
+                  </div>
+                )}
+              </div>
+              <div className="text-left space-y-2">
+                <p className="text-sm font-medium text-slate-800">1. Scan the QR Code</p>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  Open your authenticator app (like Google Authenticator or Authy) and scan this QR code.
+                </p>
+                <div className="pt-2">
+                  <p className="text-[10px] text-slate-400 uppercase font-bold">Manual Entry Key</p>
+                  <code className="text-xs bg-slate-100 px-2 py-1 rounded-none block mt-1 font-mono break-all">
+                    {secret}
+                  </code>
+                </div>
+              </div>
+              <Button onClick={() => setStep(2)} className="w-full mt-4">
+                I&apos;ve scanned it
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm font-medium text-slate-800">2. Verify the Code</p>
+                <p className="text-xs text-slate-500">
+                  Enter the 6-digit code from your authenticator app to confirm setup.
+                </p>
+              </div>
+              <Input 
+                value={token}
+                onChange={e => setToken(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                placeholder="000000"
+                className="text-center text-2xl tracking-[0.5em] font-bold h-14"
+                maxLength={6}
+                autoFocus
+              />
+              <div className="flex gap-3">
+                <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
+                  Back
+                </Button>
+                <Button onClick={handleVerify} disabled={loading} className="flex-1">
+                  {loading ? 'Verifying...' : 'Enable 2FA'}
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }
