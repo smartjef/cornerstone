@@ -60,11 +60,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </Link>
 
           <div className="flex justify-center gap-2 mb-4">
-            {post.category && (
-              <span className="bg-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
-                {post.category.name}
-              </span>
-            )}
+            <span className="bg-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
+              {post.category}
+            </span>
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
@@ -100,7 +98,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           {/* Article Body */}
-          <div className="prose prose-base sm:prose-lg dark:prose-invert prose-blue max-w-none mb-12">
+          <div className="prose prose-base sm:prose-lg dark:prose-invert prose-slate max-w-none mb-12">
             <p className="text-lg sm:text-xl leading-relaxed text-slate-600 dark:text-slate-300 font-light mb-8">
               {post.excerpt}
             </p>
@@ -111,7 +109,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className="border-t border-slate-100 dark:border-slate-800 pt-10 mt-10">
             <h3 className="text-xl sm:text-2xl font-bold flex items-center mb-6 sm:mb-8 text-slate-900 dark:text-white">
               <MessageCircle className="w-6 h-6 mr-3 text-primary" />
-              Comments (0)
+              Comments ({post.comments || 0})
             </h3>
 
             <div className="bg-slate-50 dark:bg-slate-950 p-4 sm:p-6 rounded-2xl border border-slate-100 dark:border-slate-800 mb-8">
@@ -124,6 +122,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 Post Comment
               </Button>
             </div>
+
+            {/* Mock Comment */}
+            <div className="flex gap-3 sm:gap-4 p-2 sm:p-4">
+              <div className="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <User className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3 mb-1 sm:mb-2">
+                  <h5 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">Jane Doe</h5>
+                  <span className="text-xs text-slate-500 font-medium">2 days ago</span>
+                </div>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base">This is incredible work! The impact you are making in these rural communities is truly inspiring. Keep it up.</p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -132,7 +144,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-16 sm:mt-20">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8">Related Activities</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8">Related Activities in <span className="text-primary">{post.category}</span></h3>
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {relatedPosts.map((related) => (
               <Link href={`/blog/${related.slug}`} key={related.slug} className="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 dark:hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row">
@@ -147,7 +159,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
                 </div>
                 <div className="w-full sm:w-2/3 p-5 sm:p-6 flex flex-col justify-center">
-                  <span className="text-xs font-bold text-primary mb-2 block">{related.publishedAt?.toLocaleDateString()}</span>
+                  <span className="text-xs font-bold text-primary mb-2 block">{related.date}</span>
                   <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors line-clamp-2 mb-2">{related.title}</h4>
                   <span className="text-sm font-bold text-slate-500 group-hover:text-primary flex items-center mt-auto">Read <ArrowRight className="ml-1 w-3 h-3 group-hover:translate-x-1 transition-transform" /></span>
                 </div>

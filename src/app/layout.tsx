@@ -21,7 +21,14 @@ export const metadata: Metadata = {
     description: "Credible, transparent and compassionate community impact.",
     url: "https://cornerstone.or.ke",
     siteName: "Cornerstone Foundation",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "The Cornerstone Foundation Logo" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "The Cornerstone Foundation Logo",
+      },
+    ],
     locale: "en_KE",
     type: "website",
   },
@@ -32,8 +39,13 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   icons: {
-    icon: [{ url: "/favicon.png" }, { url: "/icon.png", type: "image/png" }],
-    apple: [{ url: "/apple-icon.png" }],
+    icon: [
+      { url: "/favicon.png" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png" },
+    ],
   },
 };
 

@@ -47,8 +47,8 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ slu
 
                     {/* Info */}
                     <div className="space-y-4">
-                        <span className="inline-block text-xs font-bold text-primary uppercase tracking-wider bg-primary/10 dark:bg-primary/40 px-3 py-1 rounded-full">
-                            {member.teamType === 'BOARD' ? "Board of Trustees" : "Management Team"}
+                        <span className="inline-block text-xs font-bold text-primary uppercase tracking-wider bg-primary/10 dark:bg-primary/20 px-3 py-1 rounded-full">
+                            {isTrustee ? "Board of Trustees" : "Management Team"}
                         </span>
                         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">{member.name}</h1>
                         <p className="text-lg font-semibold text-primary">{member.position}</p>

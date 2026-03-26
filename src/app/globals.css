@@ -53,11 +53,11 @@
 
   /* Accent: Navy tint in dark */
   --accent: 219 100% 15%;
-  --accent-foreground: 219 100% 45%;
+  --accent-foreground: 219 80% 65%;
 
   --border: 240 4% 16%;
   --input: 240 4% 16%;
-  --ring: 219 100% 45%;
+  --ring: 219 80% 65%;
 }
 
 @layer base {

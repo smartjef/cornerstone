@@ -31,7 +31,7 @@ export default function GlobalError({
                 <Button
                     onClick={() => reset()}
                     size="lg"
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-bold px-8"
+                    className="bg-primary hover:bg-primary/90 text-white rounded-full font-bold px-8"
                 >
                     <RefreshCcw className="w-4 h-4 mr-2" /> Try again
                 </Button>
@@ -39,7 +39,7 @@ export default function GlobalError({
                     <Button
                         variant="outline"
                         size="lg"
-                        className="rounded-full border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:border-emerald-500 font-bold px-8 w-full"
+                        className="rounded-full border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white hover:border-primary font-bold px-8 w-full"
                     >
                         <ArrowLeft className="w-4 h-4 mr-2" /> Return Home
                     </Button>

@@ -7,10 +7,13 @@ export function Footer() {
       <div className="container grid gap-10 md:grid-cols-4">
         <div>
           <Link href="/" className="font-bold tracking-tight text-primary text-2xl flex items-center gap-2 mb-4">
-            <div className="relative w-8 h-8 shrink-0">
-              <Image src="/logo.png" alt="Cornerstone Foundation" fill className="object-contain" unoptimized={true} />
-            </div>
-
+            <Image
+              src="/icon.png"
+              alt="Cornerstone Foundation Logo"
+              width={32}
+              height={32}
+              className="rounded-lg"
+            />
             Cornerstone
           </Link>
           <p className="mt-3 text-sm text-muted-foreground">
