@@ -1,0 +1,37 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
+import { getSession } from '@/lib/auth'
+
+export async function GET(_: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const session = await getSession()
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const { id } = await params
+  const contact = await prisma.contact.findUnique({ where: { id } })
+  if (!contact) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+  return NextResponse.json(contact)
+}
+
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const session = await getSession()
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const { id } = await params
+  const { status } = await request.json()
+
+  const contact = await prisma.contact.update({
+    where: { id },
+    data: { status },
+  })
+
+  return NextResponse.json(contact)
+}
+
+export async function DELETE(_: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const session = await getSession()
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const { id } = await params
+  await prisma.contact.delete({ where: { id } })
+  return NextResponse.json({ success: true })
+}

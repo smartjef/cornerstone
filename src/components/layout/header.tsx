@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -23,15 +24,21 @@ export function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-white/20 dark:border-slate-800 transition-all duration-300">
         <div className="container flex h-20 items-center justify-between gap-4">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-bold font-heading tracking-tight text-primary dark:text-blue-300 text-2xl flex items-center gap-3">
-            <Image
-              src="/icon.png"
-              alt="Cornerstone Foundation Logo"
-              width={32}
-              height={32}
-              className="rounded-lg"
-            />
-            Cornerstone
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110">
+              <Image
+                src="/icon.png"
+                alt="Cornerstone Foundation Logo"
+                fill
+                className="object-contain"
+                priority
+                unoptimized={true}
+              />
+
+            </div>
+            <span className="font-bold tracking-tight text-primary text-xl md:text-2xl">
+              Cornerstone
+            </span>
           </Link>
 
           <nav className="hidden gap-8 text-sm md:flex">
@@ -41,7 +48,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-bold transition-colors ${isActive ? "text-primary dark:text-blue-400" : "text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-blue-400"}`}
+                  className={`font-bold transition-colors ${isActive ? "text-primary dark:text-primary" : "text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary"}`}
                 >
                   {item.label}
                 </Link>
@@ -80,7 +87,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl font-bold transition-colors ${isActive ? "text-primary dark:text-blue-400" : "text-slate-900 dark:text-white"}`}
+                  className={`text-2xl font-bold transition-colors ${isActive ? "text-primary dark:text-primary" : "text-slate-900 dark:text-white"}`}
                 >
                   {item.label}
                 </Link>
