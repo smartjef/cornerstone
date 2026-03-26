@@ -20,6 +20,8 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ slu
 
     if (!member) return notFound();
 
+    const isTrustee = member.teamType === 'BOARD';
+
     return (
         <div className="w-full bg-white dark:bg-slate-950 min-h-screen pt-32 pb-24">
             <div className="max-w-3xl mx-auto px-6">

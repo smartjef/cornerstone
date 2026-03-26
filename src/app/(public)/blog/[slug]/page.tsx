@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
           <div className="flex justify-center gap-2 mb-4">
             <span className="bg-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
-              {post.category}
+              {post.category?.name || 'General'}
             </span>
           </div>
 
@@ -109,7 +109,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className="border-t border-slate-100 dark:border-slate-800 pt-10 mt-10">
             <h3 className="text-xl sm:text-2xl font-bold flex items-center mb-6 sm:mb-8 text-slate-900 dark:text-white">
               <MessageCircle className="w-6 h-6 mr-3 text-primary" />
-              Comments ({post.comments || 0})
+              Comments (0)
             </h3>
 
             <div className="bg-slate-50 dark:bg-slate-950 p-4 sm:p-6 rounded-2xl border border-slate-100 dark:border-slate-800 mb-8">
@@ -144,7 +144,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-16 sm:mt-20">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8">Related Activities in <span className="text-primary">{post.category}</span></h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8">Related Activities in <span className="text-primary">{post.category?.name || 'this category'}</span></h3>
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {relatedPosts.map((related) => (
               <Link href={`/blog/${related.slug}`} key={related.slug} className="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 dark:hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row">
@@ -159,7 +159,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
                 </div>
                 <div className="w-full sm:w-2/3 p-5 sm:p-6 flex flex-col justify-center">
-                  <span className="text-xs font-bold text-primary mb-2 block">{related.date}</span>
+                  <span className="text-xs font-bold text-primary mb-2 block">{related.publishedAt?.toLocaleDateString()}</span>
                   <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors line-clamp-2 mb-2">{related.title}</h4>
                   <span className="text-sm font-bold text-slate-500 group-hover:text-primary flex items-center mt-auto">Read <ArrowRight className="ml-1 w-3 h-3 group-hover:translate-x-1 transition-transform" /></span>
                 </div>

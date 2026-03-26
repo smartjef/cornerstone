@@ -8,32 +8,25 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  password  String?
-  role      Role     @default(EDITOR)
-  bio       String?
-  phone     String?
-  avatar    String?
-  twoFaSecret String?
-  twoFaEnabled Boolean @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  blogs     Blog[]
-
-  // Team Member fields
-  slug      String?  @unique
-  position  String?
-  linkedIn  String?
-  teamType  TeamType?
-  isPublic  Boolean  @default(true)
-  order     Int      @default(0)
-}
-
-enum Role {
-  ADMIN
-  EDITOR
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String?
+  password     String?
+  role         Role      @default(EDITOR)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  avatar       String?
+  bio          String?
+  phone        String?
+  twoFaEnabled Boolean   @default(false)
+  twoFaSecret  String?
+  isPublic     Boolean   @default(true)
+  linkedIn     String?
+  order        Int       @default(0)
+  position     String?
+  slug         String?   @unique
+  teamType     TeamType?
+  blogs        Blog[]
 }
 
 model Category {
@@ -45,13 +38,12 @@ model Category {
   galleryItems GalleryItem[]
 }
 
-
 model Tag {
   id        String   @id @default(cuid())
   name      String   @unique
   slug      String   @unique
   createdAt DateTime @default(now())
-  blogs     Blog[]
+  blogs     Blog[]   @relation("BlogToTag")
 }
 
 model Blog {
@@ -62,32 +54,26 @@ model Blog {
   excerpt       String?
   featuredImage String?
   authorId      String?
-  author        User?      @relation(fields: [authorId], references: [id])
-  categoryId    String?
-  category      Category?  @relation(fields: [categoryId], references: [id])
-  tags          Tag[]
   status        BlogStatus @default(DRAFT)
   publishedAt   DateTime?
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
-}
-
-enum BlogStatus {
-  DRAFT
-  PUBLISHED
+  categoryId    String?
+  author        User?      @relation(fields: [authorId], references: [id])
+  category      Category?  @relation(fields: [categoryId], references: [id])
+  tags          Tag[]      @relation("BlogToTag")
 }
 
 model GalleryItem {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
   description String?
   images      Json
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
   categoryId  String?
   category    Category? @relation(fields: [categoryId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
 }
-
 
 model Contact {
   id        String        @id @default(cuid())
@@ -100,13 +86,6 @@ model Contact {
   createdAt DateTime      @default(now())
 }
 
-enum ContactStatus {
-  NEW
-  VIEWED
-  RESPONDED
-  CLOSED
-}
-
 model Media {
   id        String   @id @default(cuid())
   filename  String
@@ -117,23 +96,17 @@ model Media {
   createdAt DateTime @default(now())
 }
 
-enum TeamType {
-  BOARD
-  MANAGEMENT
-}
-
 model Testimonial {
   id        String   @id @default(cuid())
   name      String
   role      String?
   text      String
-  image     String?
   stars     Int      @default(5)
-
   isPublic  Boolean  @default(true)
   order     Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  image     String?
 }
 
 model CarouselSlide {
@@ -147,4 +120,26 @@ model CarouselSlide {
   order     Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum ContactStatus {
+  NEW
+  VIEWED
+  RESPONDED
+  CLOSED
+}
+
+enum TeamType {
+  BOARD
+  MANAGEMENT
 }

@@ -15,7 +15,13 @@ export default async function HomePage() {
   ])
 
   // Map to the expected format
-  const carouselSlides = slides.map(s => ({ image: s.image, label: s.label }))
+  const carouselSlides = slides.map(s => ({ 
+    image: s.image, 
+    label: s.label,
+    title: s.title || undefined,
+    subtitle: s.subtitle || undefined,
+    link: s.link || undefined
+  }))
   const stripImages = galleryItems.flatMap(item => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const imgs = Array.isArray(item.images) ? item.images as any[] : []
