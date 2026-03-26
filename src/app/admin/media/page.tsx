@@ -158,7 +158,7 @@ export default function MediaPage() {
           onDragLeave={() => setDragging(false)}
           onDrop={handleDrop}
           onClick={() => fileInput.current?.click()}
-          className={`border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-colors select-none ${dragging ? 'border-primary bg-primary/5' : 'border-slate-200 bg-slate-50 hover:border-primary hover:bg-primary/5'}`}
+          className={`border-2 border-dashed rounded-none p-10 text-center cursor-pointer transition-colors select-none ${dragging ? 'border-primary bg-primary/5' : 'border-slate-200 bg-slate-50 hover:border-primary hover:bg-primary/5'}`}
         >
           <CloudUpload className={`w-10 h-10 mx-auto mb-3 transition-colors ${dragging ? 'text-primary' : 'text-slate-300'}`} />
           <p className="font-semibold text-slate-700">Drag &amp; drop images here, or click to browse</p>
@@ -167,7 +167,7 @@ export default function MediaPage() {
 
         {/* Active uploads panel */}
         {activeUploads.length > 0 && (
-          <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-2">
+          <div className="bg-white border border-slate-200 rounded-none p-4 space-y-2">
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Uploading</p>
             {activeUploads.map((item, i) => (
               <div key={i} className="flex items-center gap-3 py-1">
@@ -198,14 +198,14 @@ export default function MediaPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {Array.from({ length: 12 }).map((_, i) => (
               <div key={i} className="space-y-2">
-                <Skeleton className="aspect-square rounded-xl" />
+                <Skeleton className="aspect-square rounded-none" />
                 <Skeleton className="h-3 w-3/4" />
                 <Skeleton className="h-3 w-1/2" />
               </div>
             ))}
           </div>
         ) : media.length === 0 ? (
-          <div className="bg-white border border-slate-200 rounded-xl p-16 text-center">
+          <div className="bg-white border border-slate-200 rounded-none p-16 text-center">
             <HardDrive className="w-12 h-12 text-slate-200 mx-auto mb-4" />
             <p className="font-semibold text-slate-700">No media files yet</p>
             <p className="text-sm text-slate-400 mt-1">Drag and drop images or click Upload to get started.</p>
@@ -213,7 +213,7 @@ export default function MediaPage() {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {media.map(file => (
-              <div key={file.id} className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-primary hover:shadow-md transition-all">
+              <div key={file.id} className="group bg-white border border-slate-200 rounded-none overflow-hidden hover:border-primary hover:shadow-md transition-all">
                 <div className="relative aspect-square bg-slate-100">
                   <Image 
                     src={file.url} 
@@ -226,11 +226,11 @@ export default function MediaPage() {
 
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                     <button onClick={() => copyUrl(file.url)} title="Copy URL"
-                      className="p-2 bg-white/20 backdrop-blur rounded-lg text-white hover:bg-white/30 transition-colors">
+                      className="p-2 bg-white/20 backdrop-blur rounded-none text-white hover:bg-white/30 transition-colors">
                       {copied === file.url ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     </button>
                     <button onClick={() => setDeleteTarget(file)} title="Delete"
-                      className="p-2 bg-white/20 backdrop-blur rounded-lg text-white hover:bg-red-500/80 transition-colors">
+                      className="p-2 bg-white/20 backdrop-blur rounded-none text-white hover:bg-red-500/80 transition-colors">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>

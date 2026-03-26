@@ -48,10 +48,10 @@ export default function LoginPage() {
 
         <form
           onSubmit={handleSubmit}
-          className="bg-slate-900 border border-slate-800 rounded-xl p-8 space-y-5"
+          className="bg-slate-900 border border-slate-800 rounded-none p-8 space-y-5"
         >
           {error && (
-            <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm px-4 py-3 rounded-lg">
+            <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm px-4 py-3 rounded-none">
               {error}
             </div>
           )}
@@ -67,7 +67,7 @@ export default function LoginPage() {
               required
               autoComplete="email"
               placeholder="admin@cornerstone.or.ke"
-              className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+              className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-none text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
             />
           </div>
 
@@ -82,14 +82,14 @@ export default function LoginPage() {
               required
               autoComplete="current-password"
               placeholder="••••••••"
-              className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+              className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-none text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold text-sm rounded-lg transition-colors mt-2"
+            className="w-full py-3 bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold text-sm rounded-none transition-colors mt-2"
           >
             {loading ? 'Signing in…' : 'Sign in'}
           </button>

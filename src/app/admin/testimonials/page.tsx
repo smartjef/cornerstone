@@ -208,7 +208,7 @@ export default function TestimonialsPage() {
         </div>
 
         {/* Table */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div className="bg-white rounded-none border border-slate-200 overflow-hidden">
           {loading ? (
             <div className="p-5 space-y-3">
               {Array.from({ length: 4 }).map((_, i) => (
@@ -259,7 +259,7 @@ export default function TestimonialsPage() {
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 overflow-hidden shrink-0">
+                          <div className="w-8 h-8 rounded-none bg-slate-100 border border-slate-200 overflow-hidden shrink-0 relative">
                             {t.image ? (
                               <Image 
                                 src={t.image} 
@@ -308,13 +308,13 @@ export default function TestimonialsPage() {
                         <div className="flex items-center justify-end gap-1">
                           <button
                             onClick={() => openEdit(t)}
-                            className="p-1.5 rounded text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors"
+                            className="p-1.5 rounded-none text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors"
                           >
                             <Pencil className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => setDeleteTarget(t)}
-                            className="p-1.5 rounded text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+                            className="p-1.5 rounded-none text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -345,7 +345,7 @@ export default function TestimonialsPage() {
                 Photo (optional)
               </Label>
               <div className="flex gap-4 mt-1.5 items-start">
-                <div className="w-20 h-20 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden shrink-0">
+                <div className="w-20 h-20 rounded-none bg-slate-100 border border-slate-200 overflow-hidden shrink-0 relative">
                   {form.image ? (
                     <Image 
                       src={form.image} 
@@ -459,7 +459,7 @@ export default function TestimonialsPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between rounded-lg border border-slate-200 px-4 py-3">
+            <div className="flex items-center justify-between rounded-none border border-slate-200 px-4 py-3">
               <div>
                 <p className="text-sm font-medium text-slate-800">Public</p>
                 <p className="text-xs text-slate-400">Show on the public website</p>
@@ -467,12 +467,12 @@ export default function TestimonialsPage() {
               <button
                 type="button"
                 onClick={() => setForm(f => ({ ...f, isPublic: !f.isPublic }))}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  form.isPublic ? 'bg-primary' : 'bg-slate-200'
+                className={`relative inline-flex h-6 w-11 items-center rounded-none transition-colors border ${
+                  form.isPublic ? 'bg-primary border-primary' : 'bg-slate-200 border-slate-300'
                 }`}
               >
                 <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
+                  className={`inline-block h-4 w-4 transform rounded-none bg-white shadow transition-transform ${
                     form.isPublic ? 'translate-x-6' : 'translate-x-1'
                   }`}
                 />

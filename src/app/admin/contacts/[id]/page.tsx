@@ -81,13 +81,13 @@ export default function ContactDetailPage() {
           </div>
           <button
             onClick={deleteContact}
-            className="flex items-center gap-2 px-3 py-2 text-sm text-red-500 border border-red-200 rounded-lg hover:bg-red-50 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 text-sm text-red-500 border border-red-200 rounded-none hover:bg-red-50 transition-colors"
           >
             <Trash2 className="w-4 h-4" /> Delete
           </button>
         </div>
 
-        <div className="bg-white rounded-xl border border-slate-200 p-6 space-y-5">
+        <div className="bg-white rounded-none border border-slate-200 p-6 space-y-5">
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Name</p>
@@ -118,7 +118,7 @@ export default function ContactDetailPage() {
 
           <div>
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Message</p>
-            <p className="text-slate-700 leading-relaxed whitespace-pre-wrap bg-slate-50 p-4 rounded-lg border border-slate-200">
+            <p className="text-slate-700 leading-relaxed whitespace-pre-wrap bg-slate-50 p-4 rounded-none border border-slate-200">
               {contact.message}
             </p>
           </div>

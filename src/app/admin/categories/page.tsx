@@ -103,7 +103,7 @@ export default function CategoriesPage() {
         </div>
 
         {/* Add form */}
-        <div className="bg-white border border-slate-200 rounded-xl p-5">
+        <div className="bg-white border border-slate-200 rounded-none p-5">
           <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 block">New Category</Label>
           <form onSubmit={handleAdd} className="flex gap-3">
             <Input
@@ -120,7 +120,7 @@ export default function CategoriesPage() {
         </div>
 
         {/* List */}
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+        <div className="bg-white border border-slate-200 rounded-none overflow-hidden">
           {loading ? (
             <div className="p-4 space-y-3">
               {Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}

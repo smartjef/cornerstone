@@ -112,7 +112,7 @@ export default function AdminShell({ children, title }: { children: React.ReactN
                   key={href}
                   href={href}
                   onClick={() => setSidebarOpen(false)}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-none text-sm font-medium transition-colors ${
                     isActive(href, exact)
                       ? 'bg-primary text-white'
                       : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
@@ -134,9 +134,9 @@ export default function AdminShell({ children, title }: { children: React.ReactN
           <Link
             href="/admin/profile"
             onClick={() => setSidebarOpen(false)}
-            className="flex items-center gap-3 px-1 rounded-lg hover:bg-slate-700/40 transition-colors p-1"
+            className="flex items-center gap-3 px-1 rounded-none hover:bg-slate-700/40 transition-colors p-1"
           >
-            <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-none bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
               <span className="text-primary text-xs font-bold uppercase">
                 {(user.name || user.email).charAt(0)}
               </span>
@@ -149,7 +149,7 @@ export default function AdminShell({ children, title }: { children: React.ReactN
         )}
         <button
           onClick={logout}
-          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-red-500/20 transition-colors"
+          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-none text-sm text-slate-400 hover:text-white hover:bg-red-500/20 transition-colors"
         >
           <LogOut className="w-4 h-4" />
           Sign out

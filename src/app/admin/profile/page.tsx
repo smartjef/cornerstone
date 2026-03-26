@@ -118,7 +118,7 @@ export default function ProfilePage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left: Info update */}
           <div className="lg:col-span-2 space-y-6">
-            <form onSubmit={handleUpdateProfile} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+            <form onSubmit={handleUpdateProfile} className="bg-white rounded-none border border-slate-200 overflow-hidden">
               <div className="p-6 border-b border-slate-100 bg-slate-50/50">
                 <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
                   <User className="w-4 h-4 text-primary" /> General Information
@@ -209,7 +209,7 @@ export default function ProfilePage() {
               </div>
             </form>
 
-            <form onSubmit={handleChangePassword} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+            <form onSubmit={handleChangePassword} className="bg-white rounded-none border border-slate-200 overflow-hidden">
               <div className="p-6 border-b border-slate-100 bg-slate-50/50">
                 <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
                   <Shield className="w-4 h-4 text-amber-500" /> Change Password
@@ -258,14 +258,14 @@ export default function ProfilePage() {
 
           {/* Right: Security info */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl border border-slate-200 p-6 space-y-4">
+            <div className="bg-white rounded-none border border-slate-200 p-6 space-y-4">
               <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
                 <Smartphone className="w-4 h-4 text-emerald-500" /> Two-Factor Auth
               </h2>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Add an extra layer of security to your account by enabling two-factor authentication.
               </p>
-              <div className="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
+              <div className="flex items-center justify-between p-3 rounded-none bg-slate-50 border border-slate-100">
                 <span className="text-sm font-medium">Status</span>
                 <span className={`text-xs font-bold px-2 py-1 rounded-full ${profile.twoFaEnabled ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-600'}`}>
                   {profile.twoFaEnabled ? 'Enabled' : 'Disabled'}
@@ -279,7 +279,7 @@ export default function ProfilePage() {
               </p>
             </div>
 
-            <div className="bg-blue-50 rounded-xl border border-blue-100 p-6 space-y-3 font-medium text-blue-800">
+            <div className="bg-blue-50 rounded-none border border-blue-100 p-6 space-y-3 font-medium text-blue-800">
               <h2 className="text-xs flex items-center gap-2 uppercase tracking-wider">
                 <Info className="w-3.5 h-3.5" /> Security Tip
               </h2>

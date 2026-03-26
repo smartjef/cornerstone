@@ -149,7 +149,7 @@ export default function BlogsPage() {
         </div>
 
         {/* Table card */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div className="bg-white rounded-none border border-slate-200 overflow-hidden">
           {!loading && blogs.length === 0 ? (
             <div className="py-16 flex flex-col items-center justify-center text-center">
               <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">

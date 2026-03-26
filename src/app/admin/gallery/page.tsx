@@ -8,7 +8,7 @@ import {
   Plus,
   Pencil,
   Trash2,
-  ImageIcon,
+  ImageIcon as ImageIcon,
   MoreHorizontal,
   GalleryHorizontalEnd,
 } from 'lucide-react'
@@ -35,7 +35,7 @@ import {
 interface GalleryItem {
   id: string
   title: string
-  category: string | null
+  category: { id: string; name: string } | null
   images: unknown[]
   createdAt: string
 }
@@ -106,10 +106,10 @@ export default function GalleryPage() {
         </div>
 
         {/* Table card */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div className="bg-white rounded-none border border-slate-200 overflow-hidden">
           {!loading && items.length === 0 ? (
             <div className="py-16 flex flex-col items-center justify-center text-center">
-              <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-4 overflow-hidden">
                 <GalleryHorizontalEnd className="w-7 h-7 text-slate-400" />
               </div>
               <p className="text-slate-700 font-semibold text-base mb-1">No gallery items yet</p>
@@ -155,7 +155,7 @@ export default function GalleryPage() {
                         <tr key={item.id} className="hover:bg-slate-50/60 transition-colors group">
                           <td className="px-6 py-4 max-w-[200px]">
                             <div className="flex items-center gap-3">
-                              <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center shrink-0">
+                              <div className="w-9 h-9 rounded-none bg-slate-100 flex items-center justify-center shrink-0 overflow-hidden">
                                 <ImageIcon className="w-4 h-4 text-slate-400" />
                               </div>
                               <p className="font-medium text-slate-900 leading-snug truncate">{item.title}</p>
@@ -167,7 +167,7 @@ export default function GalleryPage() {
                                 variant="outline"
                                 className="text-xs bg-violet-50 text-violet-700 border-violet-200"
                               >
-                                {item.category}
+                                {item.category.name}
                               </Badge>
                             ) : (
                               <span className="text-slate-400 text-xs">—</span>
@@ -190,7 +190,7 @@ export default function GalleryPage() {
                             <div className="flex justify-end">
                               <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                  <button className="p-1.5 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                  <button className="p-1.5 rounded-none text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
                                     <MoreHorizontal className="w-4 h-4" />
                                   </button>
                                 </DropdownMenuTrigger>
@@ -230,7 +230,7 @@ export default function GalleryPage() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-none bg-red-100 flex items-center justify-center shrink-0">
                 <Trash2 className="w-4 h-4 text-red-600" />
               </div>
               Delete Gallery Item

@@ -184,11 +184,11 @@ export default function CarouselPage() {
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} className="aspect-video rounded-xl" />
+              <Skeleton key={i} className="aspect-video rounded-none" />
             ))}
           </div>
         ) : slides.length === 0 ? (
-          <div className="bg-white rounded-xl border border-slate-200 p-16 text-center">
+          <div className="bg-white rounded-none border border-slate-200 p-16 text-center">
             <Presentation className="w-12 h-12 text-slate-200 mx-auto mb-4" />
             <p className="text-slate-500 font-medium">No carousel slides yet</p>
             <p className="text-slate-400 text-sm mt-1">Add your first slide to get started.</p>
@@ -198,7 +198,7 @@ export default function CarouselPage() {
             {sorted.map(slide => (
               <div
                 key={slide.id}
-                className="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-md transition-shadow group"
+                className="bg-white rounded-none border border-slate-200 overflow-hidden hover:shadow-md transition-shadow group"
               >
                 {/* Image preview */}
                 <div className="relative aspect-video bg-slate-100 overflow-hidden">
@@ -302,7 +302,7 @@ export default function CarouselPage() {
               <p className="text-xs text-slate-400 mt-1">Select from library or paste URL.</p>
 
               {form.image && (
-                <div className="mt-2 rounded-lg overflow-hidden border border-slate-200 aspect-video bg-slate-100">
+                <div className="mt-2 rounded-none overflow-hidden border border-slate-200 aspect-video bg-slate-100">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={form.image}
@@ -387,7 +387,7 @@ export default function CarouselPage() {
               </div>
 
               <div className="flex-1 flex items-end">
-                <div className="flex items-center justify-between w-full rounded-lg border border-slate-200 px-4 py-2.5">
+                <div className="flex items-center justify-between w-full rounded-none border border-slate-200 px-4 py-2.5">
                   <p className="text-sm font-medium text-slate-800">Active</p>
                   <button
                     type="button"

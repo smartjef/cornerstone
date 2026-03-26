@@ -153,9 +153,9 @@ export default function AdminDashboard() {
             <Link
               key={key}
               href={href}
-              className="group bg-white rounded-xl border border-slate-200 p-5 hover:border-slate-300 hover:shadow-md transition-all"
+              className="group bg-white border border-slate-200 p-5 hover:border-slate-300 hover:shadow-md transition-all"
             >
-              <div className={cn('w-10 h-10 rounded-xl flex items-center justify-center mb-4', lightColor)}>
+              <div className={cn('w-10 h-10 rounded-none flex items-center justify-center mb-4', lightColor)}>
                 <Icon className={cn('w-5 h-5', textColor)} />
               </div>
               <div>
@@ -191,9 +191,9 @@ export default function AdminDashboard() {
             <Link
               key={href}
               href={href}
-              className="group flex items-start gap-4 bg-white rounded-xl border border-slate-200 p-4 hover:border-slate-300 hover:shadow-md transition-all"
+              className="group flex items-start gap-4 bg-white border border-slate-200 p-4 hover:border-slate-300 hover:shadow-md transition-all"
             >
-              <div className={cn('w-9 h-9 rounded-lg flex items-center justify-center shrink-0', color)}>
+              <div className={cn('w-9 h-9 rounded-none flex items-center justify-center shrink-0', color)}>
                 <Icon className="w-4 h-4" />
               </div>
               <div className="min-w-0 flex-1">

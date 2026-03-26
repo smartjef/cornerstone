@@ -119,7 +119,7 @@ export default function UsersPage() {
   const management = filteredUsers.filter(u => u.teamType === 'MANAGEMENT')
 
   const UserTable = ({ data }: { data: User[] }) => (
-    <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+    <div className="bg-white rounded-none border border-slate-200 overflow-hidden">
       {data.length === 0 ? (
         <div className="p-12 text-center text-slate-400">
           <Users className="w-10 h-10 mx-auto mb-3 opacity-20" />
@@ -254,7 +254,7 @@ export default function UsersPage() {
           </div>
         ) : error ? (
           <div className="h-64 flex items-center justify-center">
-            <div className="bg-red-50 border border-red-100 p-6 rounded-xl max-w-md text-center">
+            <div className="bg-red-50 border border-red-100 p-6 rounded-none max-w-md text-center">
               <p className="text-red-600 font-semibold mb-2">Connection Error</p>
               <p className="text-red-500 text-sm mb-4">{error}</p>
               <Button 

@@ -101,10 +101,10 @@ export default function GalleryForm({ initial, mode }: Props) {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-lg">{error}</div>
+          <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-none">{error}</div>
         )}
 
-        <div className="bg-white rounded-xl border border-slate-200 p-6 space-y-5">
+        <div className="bg-white rounded-none border border-slate-200 p-6 space-y-5">
           <div>
             <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Title *</label>
             <input
@@ -113,7 +113,7 @@ export default function GalleryForm({ initial, mode }: Props) {
               onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
               required
               placeholder="Gallery title"
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+              className="w-full px-4 py-2.5 border border-slate-200 rounded-none text-slate-900 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
           <div>
@@ -121,7 +121,7 @@ export default function GalleryForm({ initial, mode }: Props) {
             <select
               value={form.categoryId}
               onChange={e => setForm(f => ({ ...f, categoryId: e.target.value }))}
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-white"
+              className="w-full px-4 py-2.5 border border-slate-200 rounded-none text-slate-900 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-white"
             >
               <option value="">Select a category</option>
               {categories.map(cat => (
@@ -137,12 +137,12 @@ export default function GalleryForm({ initial, mode }: Props) {
               onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
               rows={3}
               placeholder="Optional description…"
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
+              className="w-full px-4 py-2.5 border border-slate-200 rounded-none text-slate-900 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
             />
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-slate-200 p-6">
+        <div className="bg-white rounded-none border border-slate-200 p-6">
           <div className="flex items-center justify-between mb-4">
             <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Images</label>
             <button
@@ -155,9 +155,9 @@ export default function GalleryForm({ initial, mode }: Props) {
           </div>
           <div className="space-y-4">
             {images.map((img, i) => (
-              <div key={i} className="flex gap-3 items-start p-4 bg-slate-50 rounded-lg border border-slate-200">
+              <div key={i} className="flex gap-3 items-start p-4 bg-slate-50 rounded-none border border-slate-200">
                 <div className="flex gap-4 items-center flex-1">
-                  <div className="w-20 h-20 rounded-lg bg-white border border-slate-200 overflow-hidden shrink-0 relative">
+                  <div className="w-20 h-20 rounded-none bg-white border border-slate-200 overflow-hidden shrink-0 relative">
                     {img.src ? (
                       <Image 
                         src={img.src} 
@@ -179,7 +179,7 @@ export default function GalleryForm({ initial, mode }: Props) {
                         value={img.src}
                         onChange={e => updateImage(i, 'src', e.target.value)}
                         placeholder="Image URL..."
-                        className="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:border-primary bg-white"
+                        className="flex-1 px-3 py-2 border border-slate-200 rounded-none text-slate-900 text-sm focus:outline-none focus:border-primary bg-white"
                       />
                       <Button
                         type="button"
@@ -200,7 +200,7 @@ export default function GalleryForm({ initial, mode }: Props) {
                       value={img.caption}
                       onChange={e => updateImage(i, 'caption', e.target.value)}
                       placeholder="Caption (optional)"
-                      className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:border-primary bg-white"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-none text-slate-900 text-sm focus:outline-none focus:border-primary bg-white"
                     />
                   </div>
                 </div>
@@ -223,14 +223,14 @@ export default function GalleryForm({ initial, mode }: Props) {
         <div className="flex items-center justify-end gap-3">
           <Link
             href="/admin/gallery"
-            className="px-5 py-2.5 border border-slate-200 text-slate-700 text-sm font-semibold rounded-lg hover:bg-slate-50 transition-colors"
+            className="px-5 py-2.5 border border-slate-200 text-slate-700 text-sm font-semibold rounded-none hover:bg-slate-50 transition-colors"
           >
             Cancel
           </Link>
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 disabled:opacity-60 transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-none hover:bg-primary/90 disabled:opacity-60 transition-colors"
           >
             <Save className="w-4 h-4" />
             {saving ? 'Saving…' : 'Save'}

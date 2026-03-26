@@ -101,7 +101,7 @@ export default function TagsPage() {
           <p className="text-sm text-slate-500 mt-1">Label blog posts with descriptive tags.</p>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-5">
+        <div className="bg-white border border-slate-200 rounded-none p-5">
           <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 block">New Tag</Label>
           <form onSubmit={handleAdd} className="flex gap-3">
             <Input
@@ -117,7 +117,7 @@ export default function TagsPage() {
           </form>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+        <div className="bg-white border border-slate-200 rounded-none overflow-hidden">
           {loading ? (
             <div className="p-4 space-y-3">
               {Array.from({ length: 5 }).map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}

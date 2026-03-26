@@ -123,7 +123,7 @@ export default function MediaLibraryModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0 gap-0 overflow-hidden">
+      <DialogContent className="max-w-4xl max-h-[95vh] flex flex-col p-0 gap-0 overflow-hidden rounded-none border-none shadow-2xl">
         <DialogHeader className="p-6 border-b">
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription className="sr-only">
@@ -134,7 +134,7 @@ export default function MediaLibraryModal({
 
         <Tabs defaultValue="library" className="flex-1 flex flex-col overflow-hidden">
           <div className="px-6 border-b flex items-center justify-between">
-            <TabsList className="h-12 bg-transparent border-b-0 gap-6">
+            <TabsList className="h-12 bg-transparent border-b-0 gap-6 rounded-none">
               <TabsTrigger
                 value="library"
                 className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-0"
@@ -149,15 +149,15 @@ export default function MediaLibraryModal({
               </TabsTrigger>
             </TabsList>
 
-            <div className="relative w-64">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
-              <Input
-                placeholder="Search media..."
-                className="pl-9 h-9"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-              />
-            </div>
+              <div className="relative w-64">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
+                <Input
+                  placeholder="Search media..."
+                  className="pl-9 h-9 rounded-none bg-white border-slate-200 focus:ring-primary/20"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                />
+              </div>
           </div>
 
           <TabsContent value="library" className="flex-1 overflow-hidden m-0 p-0">
@@ -172,11 +172,11 @@ export default function MediaLibraryModal({
                     <p>No media found</p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
                     {filteredItems.map(item => (
                       <div
                         key={item.id}
-                        className={`group relative aspect-square border-2 rounded-lg cursor-pointer overflow-hidden transition-all ${
+                        className={`group relative aspect-square border-2 rounded-none cursor-pointer overflow-hidden transition-all ${
                           selectedId === item.id
                             ? 'border-primary ring-2 ring-primary ring-inset'
                             : 'border-slate-200 hover:border-slate-300'
@@ -191,13 +191,13 @@ export default function MediaLibraryModal({
                           unoptimized={true}
                         />
                         {selectedId === item.id && (
-                          <div className="absolute top-1 right-1 bg-primary text-white rounded-full p-0.5">
+                          <div className="absolute top-1 right-1 bg-primary text-white rounded-none p-0.5">
                             <Check className="h-3 w-3" />
                           </div>
                         )}
                         <button
                           onClick={e => handleDelete(item.id, e)}
-                          className="absolute bottom-1 right-1 bg-white/90 text-red-500 p-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 shadow-sm"
+                          className="absolute bottom-1 right-1 bg-white/90 text-red-500 p-1.5 rounded-none opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-50 shadow-sm"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
@@ -212,7 +212,7 @@ export default function MediaLibraryModal({
                 {selectedItem ? (
                   <div className="space-y-4">
                     <h3 className="font-semibold text-sm uppercase tracking-wider text-slate-500">Attachment Details</h3>
-                    <div className="aspect-square rounded-lg border bg-white overflow-hidden">
+                    <div className="relative aspect-square rounded-none border bg-white overflow-hidden">
                       <Image
                         src={selectedItem.url}
                         alt=""
@@ -229,13 +229,13 @@ export default function MediaLibraryModal({
                     <div className="space-y-2 pt-4 border-t">
                       <Label className="text-xs font-semibold">Alt Text</Label>
                       <Input
-                        className="text-xs h-8"
+                        className="text-xs h-8 rounded-none border-slate-200"
                         defaultValue={selectedItem.alt || ''}
                         placeholder="Describe the image..."
                       />
                     </div>
                     <Button
-                      className="w-full mt-4"
+                      className="w-full mt-4 rounded-none h-10 font-semibold"
                       onClick={() => {
                         onSelect(selectedItem.url)
                         onOpenChange(false)
@@ -254,8 +254,8 @@ export default function MediaLibraryModal({
           </TabsContent>
 
           <TabsContent value="upload" className="flex-1 flex items-center justify-center p-6 m-0">
-            <div className="max-w-md w-full border-2 border-dashed border-slate-200 rounded-xl p-12 text-center space-y-4">
-              <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-400">
+            <div className="max-w-md w-full border-2 border-dashed border-slate-200 rounded-none p-12 text-center space-y-4">
+              <div className="w-12 h-12 bg-slate-100 rounded-none border border-slate-200 flex items-center justify-center mx-auto text-slate-400">
                 {uploading ? <Loader2 className="h-6 w-6 animate-spin" /> : <UploadCloud className="h-6 w-6" />}
               </div>
               <div>
@@ -270,7 +270,7 @@ export default function MediaLibraryModal({
                 disabled={uploading}
                 accept="image/*"
               />
-              <Button asChild variant="outline" disabled={uploading}>
+              <Button asChild variant="outline" disabled={uploading} className="rounded-none">
                 <label htmlFor="media-upload" className="cursor-pointer">
                   {uploading ? 'Uploading...' : 'Select Files'}
                 </label>
